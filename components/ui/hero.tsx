@@ -5,9 +5,9 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="min-h-screen flex items-center justify-center w-full px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24 overflow-hidden"
+      className="min-h-screen flex items-start pt-20 justify-center w-full px-4 sm:px-6 lg:px-8 pb-8 md:pb-12 lg:pb-16 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-8 sm:gap-10 lg:gap-16">
+      <div className="max-w-7xl mx-auto w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-2 sm:gap-3 lg:gap-4">
         {/* Text Content */}
         <div className="w-full lg:w-3/5 text-center lg:text-left mt-8 lg:mt-0 animate-fadeIn">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 tracking-tight">
@@ -18,7 +18,7 @@ export default function Hero() {
           
           <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-lg mx-auto lg:mx-0 mb-6 sm:mb-8">
           I’m a Frontend Dev obsessed with React, Next.js, AI, and Web3!
-On the hunt for an internship or placement! If you’re a Founder, CTO, Recruiter, or know someone who can help – let’s make magic happen! 🔥 Want to know more about me? Scroll down the page! 👨‍💻💥
+On the hunt for an internship or placement! If you’re a Founder, CTO, Recruiter, or know someone who can help – let’s make magic happen! Want to know more about me? Scroll down the page!
 
 
           </p>

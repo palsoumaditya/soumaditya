@@ -11,6 +11,7 @@ import {
   NavbarButton
 } from "@/components/ui/resizable-navbar";
 import Hero from "@/components/ui/hero";
+import { AnimatedSpan, Terminal, TypingAnimation } from "@/components/ui/About";
 import { useState } from "react";
 
 export default function Home() {
@@ -75,9 +76,19 @@ export default function Home() {
         </MobileNav>
       </Navbar>
 
-      <main className="mt-16 flex min-h-screen flex-col items-center justify-center">
+      <main className="mt-16 flex min-h-screen flex-col items-center justify-center gap-0">
         <Hero />
-        {/* Your other content here */}
+        
+        <section id="about" className="container mx-auto w-full -mt-12">
+          <Terminal className="mx-auto w-full max-w-4xl border-black">
+            <AnimatedSpan delay={100}>$ whoami</AnimatedSpan>
+            <TypingAnimation delay={800}>Soumaditya</TypingAnimation>
+            <AnimatedSpan delay={2000}>$ cat skills.txt</AnimatedSpan>
+            <TypingAnimation delay={2800}>Frontend Development, UI/UX Design, React, Next.js</TypingAnimation>
+            <AnimatedSpan delay={5000}>$ echo $PASSION</AnimatedSpan>
+            <TypingAnimation delay={5800}>Building beautiful and functional web experiences</TypingAnimation>
+          </Terminal>
+        </section>
       </main>
     </>
   );
