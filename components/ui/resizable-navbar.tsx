@@ -9,7 +9,7 @@ import {
 } from "framer-motion";
  
 import React, { useRef, useState } from "react"; 
-import Image from "next/image";
+import Link from "next/link"; // Add this import at the top with other imports
  
 interface NavbarProps { 
   children: React.ReactNode; 
@@ -254,9 +254,9 @@ export const MobileNavToggle = ({
 
 export const NavbarLogo = ({ className }: NavbarLogoProps) => {
   return (
-    <a href="/" className={cn("relative z-20 flex items-center", className)}>
+    <Link href="/" className={cn("relative z-20 flex items-center", className)}>
       <span className="text-xl font-bold text-neutral-800 dark:text-white">Soumaditya</span>
-    </a>
+    </Link>
   );
 };
 
