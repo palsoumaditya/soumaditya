@@ -85,7 +85,7 @@ export default function Home() {
               <MobileNavToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
             </div>
           </MobileNavHeader>
-          <MobileNavMenu isOpen={isOpen} onClose={() => setIsOpen(false)}>
+          <MobileNavMenu isOpen={isOpen}>
             {navItems.map((item, index) => (
               <a
                 key={`mobile-nav-${index}`}
