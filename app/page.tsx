@@ -38,18 +38,28 @@ export default function Home() {
     },
   ];
 
-  // Tech stack data
+  // Tech stack data with logos
   const techStackData = [
-    { name: "React", url: "https://reactjs.org", color: "#61DAFB" },
-    { name: "TypeScript", url: "https://www.typescriptlang.org", color: "#3178C6" },
-    { name: "Next.js", url: "https://nextjs.org", color: "#000000" },
-    { name: "Tailwind CSS", url: "https://tailwindcss.com", color: "#06B6D4" },
-    { name: "Framer Motion", url: "https://www.framer.com/motion", color: "#0055FF" },
-    { name: "Node.js", url: "https://nodejs.org", color: "#339933" },
-    { name: "MongoDB", url: "https://www.mongodb.com", color: "#47A248" },
-    { name: "Python", url: "https://www.python.org", color: "#3776AB" },
-    { name: "TensorFlow", url: "https://www.tensorflow.org", color: "#FF6F00" },
-    { name: "AWS", url: "https://aws.amazon.com", color: "#FF9900" },
+    { name: "HTML", url: "https://developer.mozilla.org/en-US/docs/Web/HTML", color: "#E34F26", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+    { name: "CSS", url: "https://developer.mozilla.org/en-US/docs/Web/CSS", color: "#1572B6", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+    { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", color: "#F7DF1E", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+    { name: "React", url: "https://reactjs.org", color: "#61DAFB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+    { name: "TypeScript", url: "https://www.typescriptlang.org", color: "#3178C6", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+    { name: "Next.js", url: "https://nextjs.org", color: "#000000", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+    { name: "Tailwind CSS", url: "https://tailwindcss.com", color: "#06B6D4", logo: "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg" },
+    { name: "Framer Motion", url: "https://www.framer.com/motion", color: "#0055FF", logo: "https://www.vectorlogo.zone/logos/framer/framer-icon.svg" },
+    { name: "Redux", url: "https://redux.js.org", color: "#764ABC", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" },
+    { name: "Node.js", url: "https://nodejs.org", color: "#339933", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+    { name: "Express.js", url: "https://expressjs.com", color: "#000000", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
+    { name: "MongoDB", url: "https://www.mongodb.com", color: "#47A248", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+    { name: "PostgreSQL", url: "https://www.postgresql.org", color: "#336791", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+    { name: "Prisma", url: "https://www.prisma.io", color: "#2D3748", logo: "https://cdn.worldvectorlogo.com/logos/prisma-2.svg" },
+    { name: "C++", url: "https://isocpp.org", color: "#00599C", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
+    { name: "REST API", url: "https://restfulapi.net", color: "#FF6C37", logo: "https://www.svgrepo.com/show/375531/api.svg" },
+    { name: "GitHub", url: "https://github.com", color: "#181717", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+    { name: "Docker", url: "https://www.docker.com", color: "#2496ED", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+    { name: "Three.js", url: "https://threejs.org", color: "#000000", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg" },
+    { name: "AWS", url: "https://aws.amazon.com", color: "#FF9900", logo: "https://cdn.worldvectorlogo.com/logos/aws-2.svg" },
   ];
 
   return (
@@ -106,7 +116,7 @@ export default function Home() {
             <section id="about">
               <Terminal className="h-full border-black dark:border-white">
                 <AnimatedSpan delay={100}>$ 💻 Tech-Obsessed Builder – I don't just code, I craft experiences that blend function with flair</AnimatedSpan>
-                <TypingAnimation delay={800}>🔥 Side Project Machine – Always cooking up something new — from AI portals to simulation platforms.</TypingAnimation>
+                <TypingAnimation delay={800}>🔥 Side Project Machine – Always cooking up something new  — from AI portals to simulation platforms.</TypingAnimation>
                 <AnimatedSpan delay={2000}>$ 🎓 Founder of CodeNEST – Leading the tech charge on campus, empowering devs to build and grow.</AnimatedSpan>
                 <TypingAnimation delay={2800}>🌐 Outreach Lead @ OSSDC – Bridging student devs with the open-source world, one collab at a time.</TypingAnimation>
                 <AnimatedSpan delay={5000}>$ 🧠 Shipping Edu-Empower – An AI-powered scholarship portal making education more accessible & fair.</AnimatedSpan>
@@ -118,7 +128,7 @@ export default function Home() {
             </section>
             
             {/* Tech Stack Section */}
-            <section id="tech-stack" className="h-full">
+            <section id="tech-stack">
               <TechStack techStack={techStackData} />
             </section>
           </div>

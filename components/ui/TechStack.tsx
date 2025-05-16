@@ -8,6 +8,7 @@ interface Tech {
   name: string;
   url: string;
   color: string;
+  logo: string;
 }
 
 interface TechStackProps {
@@ -31,9 +32,9 @@ const TechStack: React.FC<TechStackProps> = ({ techStack }) => {
   };
 
   return (
-    <div className='flex justify-center items-center h-full'>
+    <div className='flex justify-center items-center'>
       <div
-        className="relative overflow-hidden w-full h-full rounded-lg shadow-lg bg-white dark:bg-black/50"
+        className="relative overflow-hidden w-full rounded-lg shadow-lg bg-white dark:bg-black/50 border border-black dark:border-white"
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -85,11 +86,25 @@ const TechStack: React.FC<TechStackProps> = ({ techStack }) => {
               <p className="font-medium mb-3 text-base">Techstack</p>
             </div>
           </div>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
             {techStack.map((tech, index) => (
-              <a key={index} target="_blank" rel="noopener noreferrer" href={tech.url}>
-                <div className="inline-flex items-center rounded-full border border-zinc-300 dark:border-zinc-700 px-2.5 py-0.5 text-xs transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">
-                  <div className="w-2 h-2 mr-2 rounded-full" style={{ backgroundColor: tech.color }}></div>
+              <a 
+                key={index} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                href={tech.url}
+                className="flex flex-col items-center justify-center p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+              >
+                <div className="w-12 h-12 mb-2 relative flex items-center justify-center">
+                  <Image
+                    src={tech.logo}
+                    alt={`${tech.name} logo`}
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                  />
+                </div>
+                <div className="text-xs text-center font-medium text-black dark:text-white">
                   {tech.name}
                 </div>
               </a>
