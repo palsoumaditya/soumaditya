@@ -115,15 +115,15 @@ export default function Home() {
             {/* About Section */}
             <section id="about">
               <Terminal className="h-full border-black dark:border-white">
-                <AnimatedSpan delay={100}>$ 💻 Tech-Obsessed Builder – I don't just code, I craft experiences that blend function with flair</AnimatedSpan>
+                <AnimatedSpan delay={100}>$ 💻 Tech-Obsessed Builder – I don&apos;t just code, I craft experiences that blend function with flair</AnimatedSpan>
                 <TypingAnimation delay={800}>🔥 Side Project Machine – Always cooking up something new  — from AI portals to simulation platforms.</TypingAnimation>
                 <AnimatedSpan delay={2000}>$ 🎓 Founder of CodeNEST – Leading the tech charge on campus, empowering devs to build and grow.</AnimatedSpan>
                 <TypingAnimation delay={2800}>🌐 Outreach Lead @ OSSDC – Bridging student devs with the open-source world, one collab at a time.</TypingAnimation>
-                <AnimatedSpan delay={5000}>$ 🧠 Shipping Edu-Empower – An AI-powered scholarship portal making education more accessible & fair.</AnimatedSpan>
+                <AnimatedSpan delay={5000}>$ 🧠 Shipping Edu-Empower – An AI-powered scholarship portal making education more accessible &amp; fair.</AnimatedSpan>
                 <TypingAnimation delay={5800}>🪄 Sim-Fluence in Progress – Building agent-based AI simulations to predict content virality.</TypingAnimation>
                 <TypingAnimation delay={7600}>🧩 Learning Addict – Currently mastering Three.js + pushing limits with AI/LLMs in social simulations.</TypingAnimation>
                 <AnimatedSpan delay={9400}>$ 🚀 Community-First Mindset – Tech is cool, but impact matters. Always mentoring, hosting, and helping devs rise.</AnimatedSpan>
-                <TypingAnimation delay={11200}>🧪 Experimenter at Heart – If it's new, bold, or untested — I'm probably already hacking on it.</TypingAnimation>
+                <TypingAnimation delay={11200}>🧪 Experimenter at Heart – If it&apos;s new, bold, or untested — I&apos;m probably already hacking on it.</TypingAnimation>
               </Terminal>
             </section>
             
