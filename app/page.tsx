@@ -71,8 +71,6 @@ export default function Home() {
           <NavItems items={navItems} />
           <div className="relative z-20 flex items-center justify-end gap-2">
             <ThemeToggle />
-            <NavbarButton variant="secondary">Sign In</NavbarButton>
-            <NavbarButton>Get Started</NavbarButton>
           </div>
         </NavBody>
 
@@ -106,12 +104,12 @@ export default function Home() {
         </MobileNav>
       </Navbar>
 
-      <main className="mt-16 flex min-h-screen flex-col items-center justify-center gap-0">
+      <main className="mt-4 sm:mt-6 md:mt-8 flex min-h-screen flex-col items-center justify-center gap-0">
         <Hero />
         
         {/* About and TechStack side by side */}
-        <div className="container mx-auto w-full -mt-24 sm:-mt-16 md:-mt-12 px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
+        <div className="container mx-auto w-full mt-10 sm:mt-14 md:mt-16 lg:mt-16 px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-18">
             {/* About Section */}
             <section id="about">
               <Terminal className="h-full border-black dark:border-white">
