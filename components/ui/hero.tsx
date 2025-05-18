@@ -17,8 +17,9 @@ export default function Hero() {
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-lg mx-auto lg:mx-0 mb-6 sm:mb-8">
-          I’m a Frontend Dev obsessed with React, Next.js, AI, and Web3!
-On the hunt for an internship or placement! If you’re a Founder, CTO, Recruiter, or know someone who can help – let’s make magic happen! Want to know more about me? Scroll down the page!
+          I'm a fullstack developer who speaks fluent React.js, dreams in Next.js, and has a love-hate relationship with MongoDB and PostgreSQL (mostly love, unless something breaks at 3AM). I build frontends that make users go “wow” and backends that don’t crash... usually. When I’m not wrangling components or debugging existential errors, you’ll find me diving into AI, poking around Web3, or pretending to be a DevOps wizard while yelling at Docker.
+
+I’m on the hunt for an internship or placement where I can turn caffeine into code and chaos into clean deployments. Got a startup idea that sounds borderline insane? Perfect. Want to collaborate on something weird and wonderful? Even better. If you’re a founder, CTO, recruiter, or just someone who thinks code should be fun — let’s talk. I promise I bring good code and great memes.
 
 
           </p>
