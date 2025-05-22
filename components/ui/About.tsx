@@ -104,14 +104,14 @@ export const Terminal = ({ children, className }: TerminalProps) => {
         className,
       )}
     >
-      <div className="flex flex-col gap-y-2 border-b border-black dark:border-white p-4 shrink-0">
+      <div className="flex flex-col gap-y-2 border-b border-black dark:border-white p-2 shrink-0">
         <div className="flex flex-row gap-x-2">
           <div className="h-2 w-2 rounded-full bg-red-500"></div>
           <div className="h-2 w-2 rounded-full bg-yellow-500"></div>
           <div className="h-2 w-2 rounded-full bg-green-500"></div>
         </div>
       </div>
-      <pre className="p-4 overflow-auto flex-1 whitespace-pre-wrap break-words">
+      <pre className="p-2 overflow-auto flex-1 whitespace-pre-wrap break-words">
         <code className="grid gap-y-1">{children}</code>
       </pre>
     </div>

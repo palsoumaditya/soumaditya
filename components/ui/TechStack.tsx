@@ -32,9 +32,20 @@ const TechStack: React.FC<TechStackProps> = ({ techStack }) => {
   };
 
   return (
-    <div className='flex justify-center items-center'>
+    <div className='flex flex-col justify-center items-center h-full'>
+      {/* Remove both heading sections - delete these lines */}
+      {/* <div className="w-full text-center mb-4 block lg:hidden">
+        <h2 className="luckiest-guy-regular text-2xl md:text-3xl text-black dark:text-white mb-2">Tech Stack? More Like Snack Stack 🍟</h2>
+        <div className="w-full h-1 bg-primary rounded-full"></div>
+      </div>
+      
+      <div className="w-full text-center mb-4 hidden lg:block">
+        <h2 className="luckiest-guy-regular text-2xl md:text-3xl text-black dark:text-white mb-2">Tech Stack? More Like Snack Stack 🍟</h2>
+        <div className="w-full h-1 bg-primary rounded-full"></div>
+      </div> */}
+      
       <div
-        className="relative overflow-hidden w-full rounded-lg shadow-lg bg-white dark:bg-black/50 border border-black dark:border-white"
+        className="relative overflow-hidden w-full rounded-lg shadow-lg bg-white dark:bg-black/50 border border-black dark:border-white flex-1"
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -63,30 +74,8 @@ const TechStack: React.FC<TechStackProps> = ({ techStack }) => {
           ></motion.div>
         )}
         
-        <div className="relative z-10 flex flex-col justify-between p-6">
-          <div className="flex justify-between">
-            <div className="flex items-center gap-2 mb-2 text-sm text-black dark:text-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-file-code mb-4"
-              >
-                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
-                <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
-                <path d="m10 13-2 2 2 2"></path>
-                <path d="m14 17 2-2-2-2"></path>
-              </svg>
-              <p className="font-medium mb-3 text-base">Techstack</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
+        <div className="relative z-10 flex flex-col justify-between p-4">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
             {techStack.map((tech, index) => (
               <a 
                 key={index} 
