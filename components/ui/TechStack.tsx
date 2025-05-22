@@ -101,7 +101,7 @@ const TechStack: React.FC<TechStackProps> = ({ techStack }) => {
                     alt={`${tech.name} logo`}
                     width={40}
                     height={40}
-                    className="object-contain"
+                    className={`object-contain ${tech.name === "Express.js" || tech.name === "Three.js" || tech.name === "Prisma" || tech.name === "GitHub" || tech.name === "AWS" ? "dark:invert" : ""}`}
                   />
                 </div>
                 <div className="text-xs text-center font-medium text-black dark:text-white">
