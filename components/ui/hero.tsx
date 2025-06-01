@@ -8,7 +8,7 @@ export default function Hero() {
       id="home" 
       className="min-h-[80vh] flex items-center justify-center w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto w-full flex flex-col-reverse md:flex-row items-center justify-between gap-8 sm:gap-10 lg:gap-12">
+      <div className="max-w-4xl mx-auto w-full flex flex-col-reverse md:flex-row items-center justify-between gap-8 sm:gap-10 lg:gap-12">
         {/* Text Content */}
         <div className="w-full md:w-3/5 text-center md:text-left mt-6 md:mt-0 animate-fadeIn">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 tracking-tight">
@@ -18,7 +18,7 @@ export default function Hero() {
           </h1>
           
           <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto md:mx-0 mb-4 sm:mb-5 leading-relaxed">
-            I&apos;m a fullstack developer who speaks fluent React.js, dreams in Next.js, and has a love-hate relationship with MongoDB and PostgreSQL (mostly love, unless something breaks at 3AM). I build frontends that make users go &quot;wow&quot; and backends that don&apos;t crash... usually. When I&apos;m not wrangling components or debugging existential errors, you&apos;ll find me diving into AI, poking around Web3, or pretending to be a DevOps wizard while yelling at Docker.I&apos;m on the hunt for an internship or placement where I can turn caffeine into code and chaos into clean deployments. Got a startup idea that sounds borderline insane? Perfect. Want to collaborate on something weird and wonderful? Even better. If you&apos;re a founder, CTO, recruiter, or just someone who thinks code should be fun — let&apos;s talk. I promise I bring good code and great memes.
+          I'm a fullstack dev fluent in React.js, dreaming in Next.js, and juggling MongoDB/PostgreSQL with minimal 3AM meltdowns. I craft frontends that wow and backends that mostly behave. Into AI, Web3, and DevOps (Docker rants included). Looking to join a team where I can turn caffeine into clean code. Got a wild idea? Let’s build it — I bring solid code and better memes.
           </p>
           
           <div className="flex flex-row flex-wrap gap-2 sm:gap-3 justify-center md:justify-start mb-4">

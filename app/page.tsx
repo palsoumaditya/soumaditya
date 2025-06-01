@@ -14,6 +14,7 @@ import Hero from "@/components/ui/hero";
 import { AnimatedSpan, Terminal, TypingAnimation } from "@/components/ui/About";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import TechStack from "@/components/ui/TechStack";
+import Footer from "@/components/ui/Footer";
 import { useState } from "react";
 
 export default function Home() {
@@ -107,10 +108,10 @@ export default function Home() {
       <main className="mt-4 sm:mt-6 md:mt-8 flex min-h-screen flex-col items-center justify-center gap-0">
         <Hero />
         
-        {/* About and TechStack side by side */}
-        <div className="container mx-auto w-full mt-10 sm:mt-14 md:mt-16 lg:mt-16 px-4 sm:px-6 lg:px-8">
+        {/* About and TechStack sections stacked */}
+        <div className="container mx-auto w-full max-w-4xl mt-10 sm:mt-14 md:mt-16 lg:mt-16 px-4 sm:px-6 lg:px-8">
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-18">
+          <div className="flex flex-col gap-6 lg:gap-18">
             {/* About Section with its heading */}
             <div className="flex flex-col">
               {/* About Section Heading */}
@@ -149,6 +150,8 @@ export default function Home() {
           </div>
         </div>
       </main>
+      
+      <Footer />
     </>
   );
 }
