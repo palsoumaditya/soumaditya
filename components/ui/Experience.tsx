@@ -1,0 +1,42 @@
+import React from "react";
+import Image from "next/image";
+
+const Experience: React.FC = () => {
+  return (
+    <section className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Top Divider and Section Label */}
+      <div className="flex items-center justify-between mb-8">
+        <div className="flex-1 border-t border-neutral-700 dark:border-neutral-700 mr-4" />
+        <span className="text-xs tracking-widest text-neutral-400 uppercase">Experience</span>
+        <div className="flex-1 border-t border-neutral-700 dark:border-neutral-700 ml-4" />
+      </div>
+      {/* Heading (no View All) */}
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-2xl md:text-3xl font-bold text-white">Where I Currently Work</h2>
+      </div>
+      {/* Experience Card */}
+      <div className="flex items-center bg-neutral-900 rounded-xl p-4 md:p-6 mb-8 shadow-md">
+        <Image
+          src="/me/LEGALCARE.png"
+          alt="Legal Care Logo"
+          width={64}
+          height={64}
+          className="w-16 h-16 rounded-lg object-contain bg-white p-2 mr-4"
+        />
+        <div>
+          <div className="flex items-center gap-2">
+            <a href="https://www.legalcare.io/" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-white hover:underline">Legal Care</a>
+          </div>
+          <div className="text-neutral-300 text-base md:text-lg">
+            Full Stack Developer Intern - Remote
+          </div>
+          <div className="text-neutral-400 text-sm mt-1">
+            Jun-2025 - Present
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Experience; 

@@ -255,7 +255,7 @@ export const MobileNavToggle = ({
 export const NavbarLogo = ({ className }: NavbarLogoProps) => {
   return (
     <Link href="/" className={cn("relative z-20 flex items-center", className)}>
-      <span className="text-xl font-bold text-neutral-800 dark:text-white">Soumaditya</span>
+      
     </Link>
   );
 };
