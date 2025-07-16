@@ -1,6 +1,6 @@
 "use client"; 
 import { cn } from "@/lib/utils"; 
-import { IconMenu2, IconX } from "@tabler/icons-react"; 
+import { IconMenu2, IconX, IconHome2 } from "@tabler/icons-react"; 
 import { 
   motion, 
   AnimatePresence, 
@@ -255,7 +255,7 @@ export const MobileNavToggle = ({
 export const NavbarLogo = ({ className }: NavbarLogoProps) => {
   return (
     <Link href="/" className={cn("relative z-20 flex items-center", className)}>
-      
+      <IconHome2 className="h-6 w-6 text-neutral-700 dark:text-neutral-200 mr-2" />
     </Link>
   );
 };
