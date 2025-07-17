@@ -1,46 +1,10 @@
 "use client";
-import {
-  Navbar,
-  NavBody,
-  NavItems,
-  MobileNav,
-  MobileNavHeader,
-  MobileNavMenu,
-  MobileNavToggle,
-  NavbarLogo,
-  NavbarButton
-} from "@/components/ui/resizable-navbar";
 import Hero from "@/components/ui/hero";
-
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 import TechStack from "@/components/ui/TechStack";
 import Footer from "@/components/ui/Footer";
 import Experience from "@/components/ui/Experience";
 import Projects from "@/components/ui/Projects";
-import { useState } from "react";
-
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const navItems = [
-    {
-      name: "Home",
-      link: "#home",
-    },
-    {
-      name: "About",
-      link: "#about",
-    },
-    {
-      name: "Projects",
-      link: "#projects",
-    },
-    {
-      name: "Contact",
-      link: "#contact",
-    },
-  ];
-
   // Tech stack data with logos
   const techStackData = [
     { name: "HTML", url: "https://developer.mozilla.org/en-US/docs/Web/HTML", color: "#E34F26", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
@@ -67,46 +31,6 @@ export default function Home() {
 
   return (
     <>
-      <Navbar>
-        {/* Desktop Navigation */}
-        <NavBody>
-          <NavbarLogo />
-          <NavItems items={navItems} />
-          <div className="relative z-20 flex items-center justify-end gap-2">
-            <ThemeToggle />
-          </div>
-        </NavBody>
-
-        {/* Mobile Navigation */}
-        <MobileNav>
-          <MobileNavHeader>
-            <NavbarLogo />
-            <div className="flex items-center gap-2">
-              <ThemeToggle />
-              <MobileNavToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
-            </div>
-          </MobileNavHeader>
-          <MobileNavMenu isOpen={isOpen}>
-            {navItems.map((item, index) => (
-              <a
-                key={`mobile-nav-${index}`}
-                href={item.link}
-                className="w-full rounded-md px-3 py-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-900"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </a>
-            ))}
-            <div className="mt-4 flex w-full flex-col gap-2">
-              <NavbarButton variant="secondary" className="w-full">
-                Sign In
-              </NavbarButton>
-              <NavbarButton className="w-full">Get Started</NavbarButton>
-            </div>
-          </MobileNavMenu>
-        </MobileNav>
-      </Navbar>
-
       <main className="mt-4 sm:mt-6 md:mt-8 flex min-h-screen flex-col items-center justify-center gap-0">
         <Hero />
         
