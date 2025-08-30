@@ -46,7 +46,11 @@ const TechStack: React.FC<TechStackProps> = ({ techStack }) => {
                 tech.name === "GitHub" || 
                 tech.name === "AWS" ||
                 tech.name === "Prometheus" ||
-                tech.name === "Loki"
+                tech.name === "Loki" ||
+                tech.name === "Grafana" ||
+                tech.name === "GCP" ||
+                tech.name === "Terraform" ||
+                tech.name === "Jenkins"
                   ? "dark:invert" 
                   : ""
               }`}
@@ -83,16 +87,28 @@ export const sampleTechStack: Tech[] = [
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg"
   },
   {
-    name: "Google Cloud",
-    url: "https://cloud.google.com/",
-    color: "#4285F4",
-    logo: "/logos/gcp.svg" // You'll need to add this logo
-  },
-  {
     name: "AWS",
     url: "https://aws.amazon.com/",
     color: "#FF9900",
-    logo: "/logos/aws.svg" // You'll need to add this logo
+    logo: "https://cdn.worldvectorlogo.com/logos/aws-2.svg"
+  },
+  {
+    name: "GCP",
+    url: "https://cloud.google.com/",
+    color: "#4285F4",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
+  },
+  {
+    name: "Terraform",
+    url: "https://www.terraform.io/",
+    color: "#7C3DC1",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg"
+  },
+  {
+    name: "Jenkins",
+    url: "https://www.jenkins.io/",
+    color: "#D33833",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg"
   }
 ];
 

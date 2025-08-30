@@ -1,10 +1,75 @@
 "use client";
+import { useEffect, useState, useMemo } from "react";
 import Hero from "@/components/ui/hero";
 import TechStack from "@/components/ui/TechStack";
 import Footer from "@/components/ui/Footer";
 import Experience from "@/components/ui/Experience";
 import Projects from "@/components/ui/Projects";
+
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentLanguage, setCurrentLanguage] = useState(0);
+
+
+  const greetings = useMemo(() => [
+    { language: "Bengali", text: "নমস্কার" },
+    { language: "Hindi", text: "নমস্তে" },
+    { language: "Tamil", text: "வணக்கம்" },
+    { language: "Gujarati", text: "નમસ્તે" },
+    { language: "Telugu", text: "నమస్కారం" },
+    { language: "Kannada", text: "ನಮಸ್ಕಾರ" },
+    { language: "Malayalam", text: "നമസ്കാരം" },
+    { language: "Marathi", text: "नमस्कार" },
+    { language: "Punjabi", text: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ" }
+  ], []);
+
+  useEffect(() => {
+    console.log("Home component mounted, starting animation");
+    
+    // Language cycling animation
+    const languageInterval = setInterval(() => {
+      setCurrentLanguage((prev) => {
+        const next = prev + 1;
+        console.log(`Changing to language ${next}: ${greetings[next]?.language}`);
+        
+        if (next < greetings.length) {
+          return next;
+        } else {
+          console.log("All languages shown, preparing to show main content");
+          clearInterval(languageInterval);
+          // Show main content after last language
+          setTimeout(() => {
+            console.log("Animation complete, showing main content");
+            setIsLoading(false);
+          }, 200);
+          return prev;
+        }
+      });
+    }, 150);
+
+    return () => {
+      console.log("Home component unmounting, cleaning up");
+      clearInterval(languageInterval);
+    };
+  }, [greetings]);
+
+  console.log(`Current state - isLoading: ${isLoading}, currentLanguage: ${currentLanguage}`);
+
+  if (isLoading) {
+    console.log("Rendering loading screen");
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-background">
+        <div className="text-center">
+          <div className="space-y-4">
+            <div className="text-6xl md:text-8xl font-bold text-neutral-900 dark:text-white mb-4">
+              {greetings[currentLanguage].text}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // Tech stack data with logos
   const techStackData = [
     { name: "HTML", url: "https://developer.mozilla.org/en-US/docs/Web/HTML", color: "#E34F26", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
@@ -27,8 +92,14 @@ export default function Home() {
     { name: "Docker", url: "https://www.docker.com", color: "#2496ED", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
     { name: "Three.js", url: "https://threejs.org", color: "#000000", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg" },
     { name: "AWS", url: "https://aws.amazon.com", color: "#FF9900", logo: "https://cdn.worldvectorlogo.com/logos/aws-2.svg" },
+    { name: "Prometheus", url: "https://prometheus.io/", color: "#E6522C", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" },
+    { name: "Grafana", url: "https://grafana.com/", color: "#F46800", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" },
+    { name: "GCP", url: "https://cloud.google.com/", color: "#4285F4", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" },
+    { name: "Terraform", url: "https://www.terraform.io/", color: "#7C3DC1", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" },
+    { name: "Jenkins", url: "https://www.jenkins.io/", color: "#D33833", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" }
   ];
 
+  console.log("Rendering main content");
   return (
     <>
       <main className="mt-4 sm:mt-6 md:mt-8 flex min-h-screen flex-col items-center justify-center gap-0">
