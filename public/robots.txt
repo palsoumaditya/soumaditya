@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://soumaditya.vercel.app/sitemap.xml
+Sitemap: https://soumadityapal.in/sitemap.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1

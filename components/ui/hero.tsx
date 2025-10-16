@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="min-h-screen flex flex-col items-center justify-start w-full px-4 pt-8 pb-0 bg-background"
+      className="min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-72px)] flex flex-col items-center justify-center w-full px-4 py-6 sm:py-8 bg-background"
     >
       {/* Profile Image at Top */}
       <div className="w-full flex justify-center mb-4">

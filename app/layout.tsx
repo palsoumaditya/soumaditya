@@ -50,14 +50,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://soumaditya.vercel.app'),
+  metadataBase: new URL('https://soumadityapal.in'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://soumaditya.vercel.app',
+    url: 'https://soumadityapal.in',
     title: 'Soumaditya Pal - Full Stack Developer & Software Engineer',
     description: 'Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Computer Science student passionate about building scalable applications.',
     siteName: 'Soumaditya Pal Portfolio',
@@ -122,8 +122,8 @@ export default function RootLayout({
               "name": "Soumaditya Pal",
               "jobTitle": "Full Stack Developer",
               "description": "Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Computer Science student passionate about building scalable applications and innovative solutions.",
-              "url": "https://soumaditya.vercel.app",
-              "image": "https://soumaditya.vercel.app/me/soumaditya.jpg",
+              "url": "https://soumadityapal.in",
+              "image": "https://soumadityapal.in/me/soumaditya.jpg",
               "sameAs": [
                 "https://github.com/soumaditya-pal",
                 "https://linkedin.com/in/soumaditya-pal",
@@ -165,7 +165,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Soumaditya Pal Portfolio",
-              "url": "https://soumaditya.vercel.app",
+              "url": "https://soumadityapal.in",
               "description": "Portfolio website of Soumaditya Pal, a Full Stack Developer and Computer Science student showcasing projects, skills, and experience.",
               "author": {
                 "@type": "Person",
@@ -173,7 +173,7 @@ export default function RootLayout({
               },
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://soumaditya.vercel.app/search?q={search_term_string}",
+              "target": "https://soumadityapal.in/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })

@@ -2,10 +2,13 @@
 
 import { useTheme } from "@/components/theme-provider";
 import { useState, useEffect } from "react";
+import ThemeTransition from "@/components/ui/ThemeTransition";
 
 export function ThemeToggle({ className }: { className?: string }) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [transitioning, setTransitioning] = useState(false);
+  const [nextTheme, setNextTheme] = useState<"light" | "dark" | null>(null);
 
   // Avoid hydration mismatch by only rendering after component is mounted
   useEffect(() => {
@@ -16,13 +19,30 @@ export function ThemeToggle({ className }: { className?: string }) {
 
   const isDarkMode = theme === "dark";
 
+  const handleToggle = () => {
+    const isDarkMode = theme === "dark";
+    const target = isDarkMode ? "light" : "dark";
+    setNextTheme(target);
+    setTransitioning(true);
+    // Delay applying the theme slightly so the overlay appears first
+    window.setTimeout(() => {
+      setTheme(target);
+    }, 50);
+    // End overlay after animation completes
+    window.setTimeout(() => {
+      setTransitioning(false);
+      setNextTheme(null);
+    }, 420);
+  };
+
   return (
     <div className={className}>
+      <ThemeTransition active={transitioning} nextTheme={nextTheme} corner="top-right" />
       <div
         className={`flex w-16 h-8 p-1 rounded-full cursor-pointer transition-all duration-300 ${
           isDarkMode ? 'bg-zinc-950 border border-zinc-800' : 'bg-white border border-zinc-200'
         }`}
-        onClick={() => setTheme(isDarkMode ? "light" : "dark")}
+        onClick={handleToggle}
         aria-label="Toggle theme"
       >
         <div className='flex justify-between items-center w-full'>

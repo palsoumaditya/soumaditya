@@ -127,3 +127,38 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Theme transition overlay: liquid-like fill from top to bottom */
+@keyframes theme-liquid-fill {
+  0% {
+    transform: translateY(-100%);
+    border-bottom-left-radius: 50% 25%;
+    border-bottom-right-radius: 50% 25%;
+  }
+  60% {
+    transform: translateY(10%);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.theme-transition-overlay {
+  animation-name: theme-liquid-fill;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Corner blob scale + drop */
+@keyframes theme-corner-blob {
+  0% { transform: scale(0.001) translateY(-6%); }
+  50% { transform: scale(1.02) translateY(0); }
+  100% { transform: scale(2.2) translateY(8%); }
+}
+
+.theme-transition-blob {
+  animation-name: theme-corner-blob;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}

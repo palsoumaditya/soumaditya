@@ -6,19 +6,19 @@ export default function Footer() {
     <footer id="contact" className="bg-gradient-to-b from-background to-neutral-50 dark:to-neutral-900 py-8 mt-12">
       <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Divider and Section Label - Same style as Tech Stack */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-center md:justify-between mb-8">
           <div className="flex-1 border-t border-neutral-300 dark:border-neutral-700 mr-4" />
           <span className="text-xs tracking-widest text-neutral-900 dark:text-white uppercase">Contact Me</span>
           <div className="flex-1 border-t border-neutral-300 dark:border-neutral-700 ml-4" />
         </div>
 
         {/* Main Contact Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 justify-items-center md:justify-items-start text-center md:text-left">
           {/* Contact Info */}
           <div className="space-y-3">
             <h3 className="text-base font-semibold text-neutral-900 dark:text-white mb-3">Get in Touch</h3>
             <div className="space-y-2">
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center justify-center md:justify-start space-x-2">
                 <FaEnvelope className="text-blue-600 dark:text-blue-400 text-sm" />
                 <div>
                   <p className="text-xs text-neutral-600 dark:text-neutral-400">Email</p>
@@ -30,7 +30,7 @@ export default function Footer() {
                   </a>
                 </div>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center justify-center md:justify-start space-x-2">
                 <FaMapMarkerAlt className="text-red-600 dark:text-red-400 text-sm" />
                 <div>
                   <p className="text-xs text-neutral-600 dark:text-neutral-400">Location</p>
@@ -62,7 +62,7 @@ export default function Footer() {
           {/* Social Connect */}
           <div className="space-y-3">
             <h3 className="text-base font-semibold text-neutral-900 dark:text-white mb-3">Connect</h3>
-            <div className="flex space-x-3">
+            <div className="flex justify-center md:justify-start space-x-3">
               <a 
                 href="https://github.com/yourusername" 
                 target="_blank" 
