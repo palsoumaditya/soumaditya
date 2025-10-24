@@ -36,12 +36,30 @@ export default function Hero() {
         </h1>
         <div className="text-sm sm:text-base md:text-lg text-neutral-900 dark:text-white font-medium mb-3">Full-stack Engineer</div>
         <p className="text-base sm:text-lg md:text-xl text-neutral-900 dark:text-white max-w-full sm:max-w-2xl mx-auto mb-4 sm:mb-5 leading-relaxed">
-          <span className="font-bold text-neutral-900 dark:text-white"></span>Fluent in <span className="font-bold text-neutral-900 dark:text-white">React</span>, dreaming in <span className="font-bold text-neutral-900 dark:text-white">Next.js</span>, and wrangling <span className="font-bold text-neutral-900 dark:text-white">MongoDB/PostgreSQL</span> with minimal chaos. Currently working as a <span className="font-bold text-neutral-900 dark:text-white">Fullstack Developer Intern</span> at <span className="font-bold text-neutral-900 dark:text-white">Legal Care</span>. Into <span className="font-bold text-neutral-900 dark:text-white">AI</span>, <span className="font-bold text-neutral-900 dark:text-white">Web3</span>, and <span className="font-bold text-neutral-900 dark:text-white">DevOps</span> (yes, I rant about Docker). Clean code, good vibes, and better memes — let&apos;s build something wild.
+          Fluent in <span className="inline-flex items-center gap-1 text-sm font-bold text-neutral-900 dark:text-white px-1.5 py-0 rounded-sm border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 mx-0.5">
+            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width={16} height={16} className="object-contain" />
+            React
+          </span>, dreaming in <span className="inline-flex items-center gap-1 text-sm font-bold text-neutral-900 dark:text-white px-1.5 py-0 rounded-sm border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 mx-0.5">
+            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" width={16} height={16} className="object-contain dark:invert" />
+            Next.js
+          </span>, and scaling ideas into real products with <span className="inline-flex items-center gap-1 text-sm font-bold text-neutral-900 dark:text-white px-1.5 py-0 rounded-sm border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 mx-0.5">
+            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" width={16} height={16} className="object-contain" />
+            Node.js
+          </span> and <span className="inline-flex items-center gap-1 text-sm font-bold text-neutral-900 dark:text-white px-1.5 py-0 rounded-sm border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 mx-0.5">
+            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" width={16} height={16} className="object-contain" />
+            PostgreSQL
+          </span>. Currently building <span className="text-sm font-bold text-neutral-900 dark:text-white px-1.5 py-0 rounded-sm border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 mx-0.5">FableFrame.in</span>, a full-stack digital studio, after completing a <span className="font-bold text-neutral-900 dark:text-white">Full-Stack Developer Internship</span> at <span className="text-sm font-bold text-neutral-900 dark:text-white px-1.5 py-0 rounded-sm border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 mx-0.5">Legal Care</span>. Into <span className="font-bold text-neutral-900 dark:text-white">
+            AI
+          </span>, <span className="font-bold text-neutral-900 dark:text-white">
+            Web3
+          </span>, and <span className="font-bold text-neutral-900 dark:text-white">
+            DevOps
+          </span> — clean code, fast deploys, and zero drama.
         </p>
       </div>
       {/* Sticky Bottom Buttons for Mobile */}
       <div className="w-full flex flex-col gap-2 sm:flex-row sm:justify-center sm:items-center sm:gap-4 mt-0 mb-0 px-2">
-        <a href="https://drive.google.com/file/d/1w-XV1nCAE1YiHqwZhNvO6Xwh0BYVAQCH/view?usp=drivesdk" download className="w-full sm:w-auto bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-white px-4 py-3 rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition text-base sm:text-lg">
+        <a href="https://drive.google.com/file/d/1B7ZIPMNwKyCT287W0Q3-p-SFxMh7O_eL/view?usp=sharing" download className="w-full sm:w-auto bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-white px-4 py-3 rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition text-base sm:text-lg">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 16v-8m0 8l-3-3m3 3l3-3m-9 5.25V19a2.25 2.25 0 002.25 2.25h9A2.25 2.25 0 0021 19v-1.75M3 15.75V19a4.5 4.5 0 004.5 4.5h9a4.5 4.5 0 004.5-4.5v-3.25" />
           </svg>

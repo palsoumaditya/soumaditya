@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState, useMemo } from "react";
+import { useLoading } from "@/lib/loading-context";
 
 export default function About() {
-  const [isLoading, setIsLoading] = useState(true);
+  const { isLoading, setIsLoading } = useLoading();
   const [currentLanguage, setCurrentLanguage] = useState(0);
   const [showFinalMessage, setShowFinalMessage] = useState(false);
 
@@ -21,6 +22,9 @@ export default function About() {
   ], []);
 
   useEffect(() => {
+    // Only run animation if loading is true (first visit)
+    if (!isLoading) return;
+    
     console.log("About component mounted, starting animation");
     document.documentElement.classList.add("about-hide-scrollbar");
     document.body.classList.add("about-hide-scrollbar");
@@ -57,7 +61,7 @@ export default function About() {
       document.body.classList.remove("about-hide-scrollbar");
       clearInterval(languageInterval);
     };
-  }, [greetings]);
+  }, [greetings, isLoading, setIsLoading]);
 
   console.log(`Current state - isLoading: ${isLoading}, currentLanguage: ${currentLanguage}, showFinalMessage: ${showFinalMessage}`);
 

@@ -5,9 +5,10 @@ import TechStack from "@/components/ui/TechStack";
 import Footer from "@/components/ui/Footer";
 import Experience from "@/components/ui/Experience";
 import Projects from "@/components/ui/Projects";
+import { useLoading } from "@/lib/loading-context";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
+  const { isLoading, setIsLoading } = useLoading();
   const [currentLanguage, setCurrentLanguage] = useState(0);
 
 
@@ -24,6 +25,9 @@ export default function Home() {
   ], []);
 
   useEffect(() => {
+    // Only run animation if loading is true (first visit)
+    if (!isLoading) return;
+    
     console.log("Home component mounted, starting animation");
     
     // Language cycling animation
@@ -51,7 +55,7 @@ export default function Home() {
       console.log("Home component unmounting, cleaning up");
       clearInterval(languageInterval);
     };
-  }, [greetings]);
+  }, [greetings, isLoading, setIsLoading]);
 
   console.log(`Current state - isLoading: ${isLoading}, currentLanguage: ${currentLanguage}`);
 

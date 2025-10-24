@@ -64,7 +64,7 @@ export default function Footer() {
             <h3 className="text-base font-semibold text-neutral-900 dark:text-white mb-3">Connect</h3>
             <div className="flex justify-center md:justify-start space-x-3">
               <a 
-                href="https://github.com/yourusername" 
+                href="https://github.com/PalSoumaditya" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-10 h-10 bg-neutral-100 dark:bg-neutral-800 rounded-lg flex items-center justify-center text-neutral-700 dark:text-neutral-300 hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 hover:scale-105"
@@ -73,7 +73,7 @@ export default function Footer() {
                 <FaGithub className="text-lg" />
               </a>
               <a 
-                href="https://linkedin.com/in/yourusername" 
+                href="https://www.linkedin.com/in/soumaditya-pal-109029309/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-10 h-10 bg-neutral-100 dark:bg-neutral-800 rounded-lg flex items-center justify-center text-neutral-700 dark:text-neutral-300 hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 hover:scale-105"
@@ -82,7 +82,7 @@ export default function Footer() {
                 <FaLinkedin className="text-lg" />
               </a>
               <a 
-                href="https://twitter.com/yourusername" 
+                href="https://x.com/soumadityapal" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-10 h-10 bg-neutral-100 dark:bg-neutral-800 rounded-lg flex items-center justify-center text-neutral-700 dark:text-neutral-300 hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 hover:scale-105"
