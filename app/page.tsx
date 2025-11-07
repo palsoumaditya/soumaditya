@@ -108,7 +108,7 @@ export default function Home() {
     <>
       <main className="mt-4 sm:mt-6 md:mt-8 flex min-h-screen flex-col items-center justify-center gap-0">
         <Hero />
-        
+
         {/* About and TechStack sections stacked */}
         <div className="container mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8" style={{ marginTop: '0.5%' }}>
           

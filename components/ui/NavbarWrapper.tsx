@@ -7,8 +7,7 @@ import {
   MobileNavHeader,
   MobileNavMenu,
   MobileNavToggle,
-  NavbarLogo,
-  NavbarButton
+  NavbarLogo
 } from "@/components/ui/resizable-navbar";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useState } from "react";
@@ -60,18 +59,12 @@ export default function NavbarWrapper() {
             <Link
               key={`mobile-nav-${index}`}
               href={item.link}
-              className="w-full rounded-md px-3 py-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-900"
+              className="flex w-full items-center justify-center rounded-md px-3 py-2 text-sm text-center transition-colors hover:bg-neutral-800/70 dark:hover:bg-neutral-800/70"
               onClick={() => setIsOpen(false)}
             >
               {item.name}
             </Link>
           ))}
-          <div className="mt-4 flex w-full flex-col gap-2">
-            <NavbarButton variant="secondary" className="w-full">
-              Sign In
-            </NavbarButton>
-            <NavbarButton className="w-full">Get Started</NavbarButton>
-          </div>
         </MobileNavMenu>
       </MobileNav>
     </Navbar>

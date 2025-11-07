@@ -3,6 +3,13 @@ import Image from "next/image";
 
 const projects = [
   {
+    title: "VideoSure",
+    subtitle:
+      "VideoSure is a human-in-the-loop video platform that translates natural language briefs into inspectable, deterministic FFmpeg transformations for production-ready edits.",
+    icon: "/me/VideoSure.png",
+    link: "#",
+  },
+  {
     title: "Involve",
     subtitle: "Involve is a revolutionary on-demand local services platform that connects users with skilled professionals in under 10 minutes",
     icon: "/me/Involve.png",

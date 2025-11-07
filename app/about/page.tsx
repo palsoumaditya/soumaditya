@@ -110,9 +110,9 @@ export default function About() {
         }
       `}</style>
       <section className="flex items-center justify-center w-full px-4 py-[2px] bg-white dark:bg-background">
-        <div className="flex flex-row items-center justify-between w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 gap-8">
+        <div className="flex w-full max-w-4xl mx-auto flex-row items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
           {/* Left: Text Content */}
-          <div className="flex-1 flex flex-col justify-center items-start text-center md:text-left">
+          <div className="flex min-w-0 flex-1 flex-col justify-center text-left">
             <span className="text-3xl md:text-4xl mb-2"></span>
             <span className="text-2xl md:text-3xl text-neutral-600 dark:text-neutral-400 mb-1 font-medium">Hi, I am</span>
             <h1 className="text-2xl md:text-4xl font-extrabold text-neutral-900 dark:text-white mb-2">Soumaditya Pal</h1>
@@ -151,6 +151,7 @@ export default function About() {
           <span className="text-base md:text-lg text-neutral-900 dark:text-white">Let&apos;s build something wild together.</span>
         </div>
       </section>
+      
     </>
   );
 } 

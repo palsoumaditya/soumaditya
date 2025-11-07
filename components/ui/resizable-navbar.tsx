@@ -218,10 +218,10 @@ export const MobileNavMenu = ({
           initial={{ opacity: 0 }} 
           animate={{ opacity: 1 }} 
           exit={{ opacity: 0 }} 
-          className={cn( 
-            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start rounded-md bg-white p-4 shadow-lg dark:bg-neutral-950", 
-            className, 
-          )} 
+          className={cn(
+            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-center gap-4 rounded-2xl border border-neutral-800/70 bg-neutral-900/90 p-6 text-neutral-100 shadow-2xl backdrop-blur-[40px] dark:border-neutral-700/70 dark:bg-neutral-950/95",
+            className,
+          )}
         > 
           {children} 
         </motion.div> 
