@@ -1,83 +1,98 @@
 "use client";
 import Image from "next/image";
+import { Caveat } from "next/font/google";
+
+const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"] });
 
 export default function Hero() {
   return (
-    <section 
-      id="home" 
-      className="min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-72px)] flex flex-col items-center justify-center w-full px-4 py-6 sm:py-8 bg-background"
+    <section
+      id="home"
+      className="relative min-h-[100dvh] flex flex-col items-center justify-center w-full px-4 py-4 bg-background text-foreground transition-colors duration-300 overflow-hidden"
     >
-      {/* Profile Image at Top */}
-      <div className="w-full flex justify-center mb-4">
-        <div className="relative w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 xl:w-40 xl:h-40">
-          {/* Animated glow effect */}
-          <div className="absolute inset-2 rounded-full bg-gradient-to-br from-primary/30 to-transparent blur-md animate-pulse"></div>
-          {/* Border ring */}
-          <div className="absolute inset-0 rounded-full border-2 border-primary/30"></div>
-          {/* Image container with padding to prevent cropping */}
-          <div className="absolute inset-1 rounded-full overflow-hidden border border-primary/20 bg-gradient-to-br from-gray-100 to-white dark:from-gray-800 dark:to-gray-900">
-            <div className="w-full h-full relative rounded-full overflow-hidden">
-              <Image
-                src="/me/soumaditya.jpg"
-                alt="Soumaditya Pal - Portfolio Profile"
-                fill
-                className="object-cover object-center"
-                priority
-                sizes="(max-width: 640px) 7rem, (max-width: 768px) 8rem, (max-width: 1024px) 10rem, (max-width: 1280px) 12rem, 14rem"
-              />
-            </div>
+      {/* Annotated Image Container */}
+      <div className="relative mb-6 md:mb-10 flex justify-center items-center scale-[0.75] xs:scale-[0.85] sm:scale-100">
+        
+        {/* --- LEFT SIDE ANNOTATIONS --- */}
+        <div className={`absolute -left-28 -top-10 md:-left-64 md:-top-4 ${caveat.className} text-sky-500 dark:text-sky-400 -rotate-6 text-right`}>
+          <p className="text-lg md:text-xl font-bold whitespace-nowrap">Frontend Architecture</p>
+          <div className="flex justify-end mt-1">
+            <svg width="50" height="25" viewBox="0 0 60 30" className="fill-none stroke-current opacity-60 stroke-[3]">
+              <path d="M10,5 Q30,5 50,25" strokeLinecap="round" />
+              <path d="M42,24 L50,25 L48,16" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+        </div>
+
+        <div className={`absolute -left-32 top-24 md:-left-72 md:top-28 ${caveat.className} text-emerald-600 dark:text-emerald-400 rotate-2 text-right`}>
+          <p className="text-lg md:text-xl font-bold whitespace-nowrap">Distributed Systems</p>
+          <div className="flex justify-end mt-1">
+            <svg width="50" height="25" viewBox="0 0 60 30" className="fill-none stroke-current opacity-60 stroke-[3]">
+              <path d="M10,25 Q30,25 50,5" strokeLinecap="round" />
+              <path d="M42,6 L50,5 L43,14" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+        </div>
+
+        {/* --- CENTER IMAGE --- */}
+        <div className="relative w-32 h-32 md:w-44 md:h-44 z-10">
+          <div className="absolute inset-0 rounded-full border border-dashed border-primary/30 animate-[spin_60s_linear_infinite]"></div>
+          <div className="absolute inset-1.5 rounded-full overflow-hidden border border-primary/20 bg-muted">
+            <Image
+              src="/me/soumaditya.jpg"
+              alt="Soumaditya"
+              fill
+              className="object-cover grayscale dark:brightness-90"
+              priority
+            />
+          </div>
+        </div>
+
+        {/* --- RIGHT SIDE ANNOTATIONS --- */}
+        <div className={`absolute -right-28 -top-10 md:-right-64 md:-top-4 ${caveat.className} text-indigo-600 dark:text-indigo-400 rotate-6 text-left`}>
+          <p className="text-lg md:text-xl font-bold whitespace-nowrap">Scalable Backends</p>
+          <div className="flex justify-start mt-1">
+            <svg width="50" height="25" viewBox="0 0 60 30" className="fill-none stroke-current opacity-60 stroke-[3]">
+              <path d="M50,5 Q30,5 10,25" strokeLinecap="round" />
+              <path d="M18,24 L10,25 L12,16" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+        </div>
+
+        <div className={`absolute -right-32 top-24 md:-right-72 md:top-28 ${caveat.className} text-orange-600 dark:text-orange-400 -rotate-2 text-left`}>
+          <p className="text-lg md:text-xl font-bold whitespace-nowrap">Full-Cycle Engineering</p>
+          <div className="flex justify-start mt-1">
+            <svg width="50" height="25" viewBox="0 0 60 30" className="fill-none stroke-current opacity-60 stroke-[3]">
+              <path d="M50,25 Q30,25 10,5" strokeLinecap="round" />
+              <path d="M18,6 L10,5 L17,14" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </div>
         </div>
       </div>
-      {/* Text Content */}
-      <div className="w-full max-w-xs sm:max-w-md md:max-w-2xl flex flex-col items-center text-center px-2 sm:px-4">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 tracking-tight text-neutral-900 dark:text-white">
-          Hey, I&apos;m <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">Soumaditya</span>
+
+      {/* --- MAIN TEXT CONTENT --- */}
+      <div className="w-full max-w-3xl flex flex-col items-center text-center px-4">
+        <h2 className={`mb-3 text-3xl md:text-5xl ${caveat.className} text-primary tracking-wide`}>
+          Hi, I&apos;m Soumaditya
+        </h2>
+        
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6 tracking-tighter uppercase italic leading-none">
+          Full Stack <span className="text-primary">Engineer</span>
         </h1>
-        <div className="text-sm sm:text-base md:text-lg text-neutral-900 dark:text-white font-medium mb-3">Full-stack Engineer</div>
-        <p className="text-base sm:text-lg md:text-xl text-neutral-900 dark:text-white max-w-full sm:max-w-2xl mx-auto mb-4 sm:mb-5 leading-relaxed">
-          Fluent in <span className="inline-flex items-center gap-1 text-sm font-bold text-neutral-900 dark:text-white px-1.5 py-0 rounded-sm border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 mx-0.5">
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width={16} height={16} className="object-contain" />
-            React
-          </span>, dreaming in <span className="inline-flex items-center gap-1 text-sm font-bold text-neutral-900 dark:text-white px-1.5 py-0 rounded-sm border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 mx-0.5">
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" width={16} height={16} className="object-contain dark:invert" />
-            Next.js
-          </span>, and scaling ideas into real products with <span className="inline-flex items-center gap-1 text-sm font-bold text-neutral-900 dark:text-white px-1.5 py-0 rounded-sm border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 mx-0.5">
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" width={16} height={16} className="object-contain" />
-            Node.js
-          </span> and <span className="inline-flex items-center gap-1 text-sm font-bold text-neutral-900 dark:text-white px-1.5 py-0 rounded-sm border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 mx-0.5">
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" width={16} height={16} className="object-contain" />
-            PostgreSQL
-          </span>. Currently building <span className="text-sm font-bold text-neutral-900 dark:text-white px-1.5 py-0 rounded-sm border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 mx-0.5">FableFrame.in</span>, a full-stack digital studio, after completing a <span className="font-bold text-neutral-900 dark:text-white">Full-Stack Developer Internship</span> at <span className="text-sm font-bold text-neutral-900 dark:text-white px-1.5 py-0 rounded-sm border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 mx-0.5">Legal Care</span>. Into <span className="font-bold text-neutral-900 dark:text-white">
-            AI
-          </span>, <span className="font-bold text-neutral-900 dark:text-white">
-            Web3
-          </span>, and <span className="font-bold text-neutral-900 dark:text-white">
-            DevOps
-          </span> — clean code, fast deploys, and zero drama.
+        
+        <p className="text-sm md:text-lg text-muted-foreground max-w-md md:max-w-xl leading-relaxed mb-8">
+          Building <span className="text-foreground font-medium">resilient systems</span> and 
+          high-performance interfaces for the modern web.
         </p>
-      </div>
-      {/* Sticky Bottom Buttons for Mobile */}
-      <div className="w-full flex flex-col gap-2 sm:flex-row sm:justify-center sm:items-center sm:gap-4 mt-0 mb-0 px-2">
-        <a href="https://drive.google.com/file/d/1B7ZIPMNwKyCT287W0Q3-p-SFxMh7O_eL/view?usp=sharing" download className="w-full sm:w-auto bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-white px-4 py-3 rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition text-base sm:text-lg">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 16v-8m0 8l-3-3m3 3l3-3m-9 5.25V19a2.25 2.25 0 002.25 2.25h9A2.25 2.25 0 0021 19v-1.75M3 15.75V19a4.5 4.5 0 004.5 4.5h9a4.5 4.5 0 004.5-4.5v-3.25" />
-          </svg>
-          Resume
-        </a>
-        <a
-          href="https://www.linkedin.com/in/soumaditya-pal-109029309/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full sm:w-auto bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-white px-4 py-3 rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition text-base sm:text-lg"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
-            <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M7 17V10M7 7.5V7.51M12 17V13.5M12 13.5C12 12.1193 13.1193 11 14.5 11C15.8807 11 17 12.1193 17 13.5V17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <circle cx="7" cy="8" r="1" fill="currentColor" />
-          </svg>
-          Connect
-        </a>
+        
+        <div className="flex flex-row gap-4">
+          <a href="#" className="px-8 py-3 bg-foreground text-background rounded-full font-bold text-sm md:text-base hover:opacity-90 transition-all active:scale-95">
+            Resume
+          </a>
+          <a href="#" className="px-8 py-3 border border-border bg-background text-foreground rounded-full font-bold text-sm md:text-base hover:bg-muted transition-all active:scale-95">
+            Connect
+          </a>
+        </div>
       </div>
     </section>
   );
