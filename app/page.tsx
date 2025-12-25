@@ -1,137 +1,112 @@
 "use client";
-import { useEffect, useState, useMemo } from "react";
+
+import { useEffect, useMemo, useState } from "react";
+import { Caveat } from "next/font/google";
+
 import Hero from "@/components/ui/hero";
-import TechStack from "@/components/ui/TechStack";
-import Footer from "@/components/ui/Footer";
 import Experience from "@/components/ui/Experience";
 import Projects from "@/components/ui/Projects";
-import { useLoading } from "@/lib/loading-context";
+import TechStack from "@/components/ui/TechStack";
+import Footer from "@/components/ui/Footer";
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export default function Home() {
-  const { isLoading, setIsLoading } = useLoading();
+  const [showIntro, setShowIntro] = useState(true);
   const [currentLanguage, setCurrentLanguage] = useState(0);
 
-
-  const greetings = useMemo(() => [
-    { language: "Bengali", text: "নমস্কার" },
-    { language: "Hindi", text: "নমস্তে" },
-    { language: "Tamil", text: "வணக்கம்" },
-    { language: "Gujarati", text: "નમસ્તે" },
-    { language: "Telugu", text: "నమస్కారం" },
-    { language: "Kannada", text: "ನಮಸ್ಕಾರ" },
-    { language: "Malayalam", text: "നമസ്കാരം" },
-    { language: "Marathi", text: "नमस्कार" },
-    { language: "Punjabi", text: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ" }
-  ], []);
+  const greetings = useMemo(
+    () => [
+      "নমস্কার",
+      "नमस्ते",
+      "வணக்கம்",
+      "નમસ્તે",
+      "నమస్కారం",
+      "ನಮಸ್ಕಾರ",
+      "നമസ്കാരം",
+      "नमस्कार",
+      "ਸਤ ਸ੍ਰੀ ਅকাল",
+    ],
+    []
+  );
 
   useEffect(() => {
-    // Only run animation if loading is true (first visit)
-    if (!isLoading) return;
-    
-    console.log("Home component mounted, starting animation");
-    
-    // Language cycling animation
-    const languageInterval = setInterval(() => {
-      setCurrentLanguage((prev) => {
-        const next = prev + 1;
-        console.log(`Changing to language ${next}: ${greetings[next]?.language}`);
-        
-        if (next < greetings.length) {
-          return next;
-        } else {
-          console.log("All languages shown, preparing to show main content");
-          clearInterval(languageInterval);
-          // Show main content after last language
-          setTimeout(() => {
-            console.log("Animation complete, showing main content");
-            setIsLoading(false);
-          }, 200);
-          return prev;
-        }
-      });
-    }, 150);
+    let timeoutId: NodeJS.Timeout;
 
-    return () => {
-      console.log("Home component unmounting, cleaning up");
-      clearInterval(languageInterval);
+    const run = (index: number) => {
+      if (index < greetings.length) {
+        setCurrentLanguage(index);
+        // Fastened to 180ms for a snappier transition
+        timeoutId = setTimeout(() => run(index + 1), 180);
+      } else {
+        // Reduced wait time to show content faster
+        timeoutId = setTimeout(() => {
+          setShowIntro(false);
+        }, 300);
+      }
     };
-  }, [greetings, isLoading, setIsLoading]);
 
-  console.log(`Current state - isLoading: ${isLoading}, currentLanguage: ${currentLanguage}`);
+    run(0);
 
-  if (isLoading) {
-    console.log("Rendering loading screen");
+    return () => clearTimeout(timeoutId);
+  }, [greetings]);
+
+  // 🔥 INTRO LOADER
+  if (showIntro) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-background">
-        <div className="text-center">
-          <div className="space-y-4">
-            <div className="text-6xl md:text-8xl font-bold text-neutral-900 dark:text-white mb-4">
-              {greetings[currentLanguage].text}
-            </div>
-          </div>
+      <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background">
+        <div
+          key={currentLanguage}
+          className={`${caveat.className} text-6xl md:text-8xl font-bold text-primary animate-in fade-in zoom-in duration-200`}
+        >
+          {greetings[currentLanguage]}
         </div>
+
+        <svg
+          width="180"
+          height="20"
+          viewBox="0 0 140 12"
+          fill="none"
+          className="text-emerald-500 mt-6 opacity-70"
+        >
+          <path
+            d="M5 7C30 5 110 5 135 8"
+            stroke="currentColor"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeDasharray="1 2"
+            className="animate-pulse"
+          />
+        </svg>
+
+        <p
+          className={`${caveat.className} mt-8 text-xl md:text-2xl text-emerald-500 opacity-60`}
+        >
+          Engineering thoughtful digital experiences
+        </p>
       </div>
     );
   }
 
-  // Tech stack data with logos
-  const techStackData = [
-    { name: "HTML", url: "https://developer.mozilla.org/en-US/docs/Web/HTML", color: "#E34F26", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
-    { name: "CSS", url: "https://developer.mozilla.org/en-US/docs/Web/CSS", color: "#1572B6", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
-    { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", color: "#F7DF1E", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-    { name: "React", url: "https://reactjs.org", color: "#61DAFB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-    { name: "TypeScript", url: "https://www.typescriptlang.org", color: "#3178C6", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-    { name: "Next.js", url: "https://nextjs.org", color: "#000000", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-    { name: "Tailwind CSS", url: "https://tailwindcss.com", color: "#06B6D4", logo: "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg" },
-    { name: "Framer Motion", url: "https://www.framer.com/motion", color: "#0055FF", logo: "https://www.vectorlogo.zone/logos/framer/framer-icon.svg" },
-    { name: "Redux", url: "https://redux.js.org", color: "#764ABC", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" },
-    { name: "Node.js", url: "https://nodejs.org", color: "#339933", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-    { name: "Express.js", url: "https://expressjs.com", color: "#000000", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
-    { name: "MongoDB", url: "https://www.mongodb.com", color: "#47A248", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
-    { name: "PostgreSQL", url: "https://www.postgresql.org", color: "#336791", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
-    { name: "Prisma", url: "https://www.prisma.io", color: "#2D3748", logo: "https://cdn.worldvectorlogo.com/logos/prisma-2.svg" },
-    { name: "C++", url: "https://isocpp.org", color: "#00599C", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
-    { name: "REST API", url: "https://restfulapi.net", color: "#FF6C37", logo: "https://www.svgrepo.com/show/375531/api.svg" },
-    { name: "GitHub", url: "https://github.com", color: "#181717", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
-    { name: "Docker", url: "https://www.docker.com", color: "#2496ED", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
-    { name: "Three.js", url: "https://threejs.org", color: "#000000", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg" },
-    { name: "AWS", url: "https://aws.amazon.com", color: "#FF9900", logo: "https://cdn.worldvectorlogo.com/logos/aws-2.svg" },
-    { name: "Prometheus", url: "https://prometheus.io/", color: "#E6522C", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" },
-    { name: "Grafana", url: "https://grafana.com/", color: "#F46800", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" },
-    { name: "GCP", url: "https://cloud.google.com/", color: "#4285F4", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" },
-    { name: "Terraform", url: "https://www.terraform.io/", color: "#7C3DC1", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" },
-    { name: "Jenkins", url: "https://www.jenkins.io/", color: "#D33833", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" }
-  ];
-
-  console.log("Rendering main content");
+  // 🔥 NORMAL PAGE CONTENT
   return (
     <>
-      <main className="mt-4 sm:mt-6 md:mt-8 flex min-h-screen flex-col items-center justify-center gap-0">
+      <main className="flex min-h-screen flex-col items-center justify-start pt-8 overflow-x-hidden">
         <Hero />
 
-        {/* About and TechStack sections stacked */}
-        <div className="container mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8" style={{ marginTop: '0.5%' }}>
-          
-          <div className="flex flex-col gap-6 lg:gap-18">
-            {/* Experience Section */}
+        <div className="container mx-auto w-full max-w-4xl px-4 mt-20">
+          <div className="flex flex-col gap-32">
             <Experience />
-            {/* Projects Section */}
             <Projects />
-            {/* Tech Stack Section with its heading */}
-            <div className="flex flex-col">
-              {/* Tech Stack Heading */}
-              <div className="w-full text-center mb-6">
-                <h2 className="luckiest-guy-regular text-2xl md:text-3xl text-black dark:text-white mb-2"></h2>
-              </div>
-              
-              <section id="tech-stack" className="h-full flex flex-col">
-                <TechStack techStack={techStackData} />
-              </section>
-            </div>
+            {/* Remember to pass your actual tech stack array here */}
+            <TechStack techStack={[]} /> 
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </>
   );

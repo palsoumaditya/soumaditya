@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Navbar,
   NavBody,
@@ -7,31 +8,25 @@ import {
   MobileNavHeader,
   MobileNavMenu,
   MobileNavToggle,
-  NavbarLogo
+  NavbarLogo,
 } from "@/components/ui/resizable-navbar";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useState } from "react";
 import Link from "next/link";
+import { useLoading } from "@/lib/loading-context";
+
 export default function NavbarWrapper() {
+  const { isLoading } = useLoading(); // 👈 KEY LINE
   const [isOpen, setIsOpen] = useState(false);
 
+  // ❌ Do NOT render navbar during intro loader
+  if (isLoading) return null;
+
   const navItems = [
-    {
-      name: "Home",
-      link: "/",
-    },
-    {
-      name: "About",
-      link: "/about",
-    },
-    {
-      name: "Projects",
-      link: "/#projects",
-    },
-    {
-      name: "Contact",
-      link: "/#contact",
-    },
+    { name: "Home", link: "/" },
+    { name: "About", link: "/about" },
+    { name: "Projects", link: "/#projects" },
+    { name: "Contact", link: "/#contact" },
   ];
 
   return (
@@ -51,9 +46,13 @@ export default function NavbarWrapper() {
           <NavbarLogo />
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <MobileNavToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
+            <MobileNavToggle
+              isOpen={isOpen}
+              onClick={() => setIsOpen(!isOpen)}
+            />
           </div>
         </MobileNavHeader>
+
         <MobileNavMenu isOpen={isOpen}>
           {navItems.map((item, index) => (
             <Link
@@ -69,4 +68,4 @@ export default function NavbarWrapper() {
       </MobileNav>
     </Navbar>
   );
-} 
+}

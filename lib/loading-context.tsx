@@ -1,5 +1,6 @@
 "use client";
-import React, { createContext, useContext, useState, useEffect } from 'react';
+
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface LoadingContextType {
   hasVisited: boolean;
@@ -14,26 +15,16 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check if user has visited before using sessionStorage
-    const visited = sessionStorage.getItem('hasVisited');
-    
+    const visited = sessionStorage.getItem("hasVisited");
+
     if (visited) {
-      // User has visited before, skip loading animation
+      // Returning user → skip loader
       setHasVisited(true);
       setIsLoading(false);
     } else {
-      // First time visitor, show loading animation
+      // First visit → show loader
       setHasVisited(false);
       setIsLoading(true);
-      
-      // Mark as visited after loading completes
-      const timer = setTimeout(() => {
-        sessionStorage.setItem('hasVisited', 'true');
-        setHasVisited(true);
-        setIsLoading(false);
-      }, 2000); // Adjust timing based on your loading animation duration
-      
-      return () => clearTimeout(timer);
     }
   }, []);
 
@@ -46,8 +37,8 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
 
 export function useLoading() {
   const context = useContext(LoadingContext);
-  if (context === undefined) {
-    throw new Error('useLoading must be used within a LoadingProvider');
+  if (!context) {
+    throw new Error("useLoading must be used within LoadingProvider");
   }
   return context;
 }

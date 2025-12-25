@@ -1,157 +1,102 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState, useMemo } from "react";
-import { useLoading } from "@/lib/loading-context";
+import React from "react";
+import { Caveat, Inter } from "next/font/google";
+
+const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"] });
+const inter = Inter({ subsets: ["latin"] }); 
 
 export default function About() {
-  const { isLoading, setIsLoading } = useLoading();
-  const [currentLanguage, setCurrentLanguage] = useState(0);
-  const [showFinalMessage, setShowFinalMessage] = useState(false);
-
-  const greetings = useMemo(() => [
-    { language: "Bengali", text: "নমস্কার" },
-    { language: "Hindi", text: "নমস্তে" },
-    { language: "Tamil", text: "வணக்கம்" },
-    { language: "Gujarati", text: "નમસ્તે" },
-    { language: "Telugu", text: "నమస్కారం" },
-    { language: "Kannada", text: "ನಮಸ್ಕಾರ" },
-    { language: "Malayalam", text: "നമസ്കാരം" },
-    { language: "Marathi", text: "नमस्कार" },
-    { language: "Punjabi", text: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ" },
-    { language: "Urdu", text: "السلام علیکم" }
-  ], []);
-
-  useEffect(() => {
-    // Only run animation if loading is true (first visit)
-    if (!isLoading) return;
-    
-    console.log("About component mounted, starting animation");
-    document.documentElement.classList.add("about-hide-scrollbar");
-    document.body.classList.add("about-hide-scrollbar");
-    
-    // Language cycling animation
-    const languageInterval = setInterval(() => {
-      setCurrentLanguage((prev) => {
-        const next = prev + 1;
-        console.log(`Changing to language ${next}: ${greetings[next]?.language}`);
-        
-        if (next < greetings.length) {
-          return next;
-        } else {
-          console.log("All languages shown, preparing final message");
-          clearInterval(languageInterval);
-          // Show final message after last language
-          setTimeout(() => {
-            console.log("Showing final message");
-            setShowFinalMessage(true);
-            // Show main content after final message
-            setTimeout(() => {
-              console.log("Animation complete, showing main content");
-              setIsLoading(false);
-            }, 2000);
-          }, 1000);
-          return prev;
-        }
-      });
-    }, 800);
-
-    return () => {
-      console.log("About component unmounting, cleaning up");
-      document.documentElement.classList.remove("about-hide-scrollbar");
-      document.body.classList.remove("about-hide-scrollbar");
-      clearInterval(languageInterval);
-    };
-  }, [greetings, isLoading, setIsLoading]);
-
-  console.log(`Current state - isLoading: ${isLoading}, currentLanguage: ${currentLanguage}, showFinalMessage: ${showFinalMessage}`);
-
-  if (isLoading) {
-    console.log("Rendering loading screen");
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-background">
-        <div className="text-center">
-          {!showFinalMessage ? (
-            <div className="space-y-4">
-              <div className="text-6xl md:text-8xl font-bold text-neutral-900 dark:text-white mb-4">
-                {greetings[currentLanguage].text}
-              </div>
-              <div className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-400">
-                {greetings[currentLanguage].language}
-              </div>
-            </div>
-          ) : (
-            <div className="space-y-4">
-              <div className="text-4xl md:text-6xl font-bold text-neutral-900 dark:text-white mb-4">
-                I&apos;m Soumaditya Pal
-              </div>
-              <div className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400">
-                (that midnight coder)
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    );
-  }
-
-  console.log("Rendering main content");
   return (
-    <>
-      <style>{`
-        .about-no-scroll::-webkit-scrollbar { display: none; }
-        .about-no-scroll { -ms-overflow-style: none; scrollbar-width: none; overflow: hidden !important; }
-        html.about-hide-scrollbar, body.about-hide-scrollbar {
-          scrollbar-width: thin;
-          scrollbar-color: transparent transparent;
-        }
-        html.about-hide-scrollbar::-webkit-scrollbar, body.about-hide-scrollbar::-webkit-scrollbar {
-          width: 0px;
-          background: transparent;
-        }
-      `}</style>
-      <section className="flex items-center justify-center w-full px-4 py-[2px] bg-white dark:bg-background">
-        <div className="flex w-full max-w-4xl mx-auto flex-row items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
-          {/* Left: Text Content */}
-          <div className="flex min-w-0 flex-1 flex-col justify-center text-left">
-            <span className="text-3xl md:text-4xl mb-2"></span>
-            <span className="text-2xl md:text-3xl text-neutral-600 dark:text-neutral-400 mb-1 font-medium">Hi, I am</span>
-            <h1 className="text-2xl md:text-4xl font-extrabold text-neutral-900 dark:text-white mb-2">Soumaditya Pal</h1>
-            <span className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 mt-1">(that midnight coder)</span>
-          </div>
-          {/* Right: Profile Image */}
-          <div className="flex-shrink-0 mt-6 md:mt-0">
-            <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-[#6C47FF] flex items-center justify-center">
+    <section 
+      id="about" 
+      className={`${inter.className} w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-32 md:pb-40 bg-background text-foreground transition-colors duration-300`}
+    >
+      {/* Section Header */}
+      <div className="flex flex-col items-center mb-16 relative">
+        <h2 className={`${caveat.className} text-3xl md:text-5xl text-primary tracking-tight`}>
+          The Builder Story
+        </h2>
+        <svg width="140" height="12" viewBox="0 0 140 12" fill="none" className="text-primary/40 mt-1">
+          <path d="M5 7C30 5 110 5 135 8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeDasharray="1 2" />
+        </svg>
+      </div>
+
+      <div className="relative">
+        <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+          
+          {/* Left: Profile Image with Professional Border */}
+          <div className="relative group">
+            <div className="relative w-40 h-40 md:w-56 md:h-56 rounded-[2.5rem] overflow-hidden border border-border bg-card shadow-2xl z-10 transition-all duration-500 group-hover:border-primary/50">
               <Image
                 src="/me/soumaditya.jpg"
-                alt="Soumaditya Pal - Portfolio Profile"
-                width={160}
-                height={160}
-                className="object-cover object-center w-full h-full rounded-full"
+                alt="Soumaditya Pal"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
                 priority
               />
             </div>
+            {/* Minimalist accent behind image */}
+            <div className="absolute -inset-2 border border-primary/10 rounded-[2.8rem] rotate-3 group-hover:rotate-0 transition-transform duration-500" />
+          </div>
+
+          {/* Right: Identity Content */}
+          <div className="flex-1 text-center md:text-left">
+            <p className={`${caveat.className} text-2xl text-primary mb-1`}>
+              Full Stack Engineer
+            </p>
+            <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 text-foreground">
+              Soumaditya Pal
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground font-medium tracking-wide mb-6">
+              Specializing in Distributed Systems & Modern Web Architectures
+            </p>
+            
+            <div className="space-y-5 text-base md:text-lg leading-relaxed text-muted-foreground">
+              <p>
+                I am a <span className="text-foreground font-semibold">Final-year Computer Science Engineer</span> at NSHM Durgapur, currently operating as a <span className="text-foreground font-semibold">Full Stack Developer Intern at Legal Care.</span> My focus lies in bridging the gap between complex backend logic and high-performance user interfaces.
+              </p>
+            </div>
           </div>
         </div>
-      </section>
-      {/* Who Am I Section */}
-      <section className="w-full flex justify-center px-4 bg-white dark:bg-background">
-        <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-2">
-          <h2 className="text-lg md:text-xl font-bold text-neutral-900 dark:text-white mb-2 flex items-center gap-2">
-            <span>🚀</span> About me
-          </h2>
-          <div className="text-base md:text-lg text-neutral-900 dark:text-white space-y-0.5">
-            <div>I&apos;m a <span className="text-neutral-900 dark:text-white font-bold">21-year-old</span> night owl who loves building cool and useful things at 3:00 AM (because bugs fear the dark 🌙). Currently in my final year of <span className="text-neutral-900 dark:text-white font-bold">B.Tech in Computer Science & Engineering</span> at <span className="text-neutral-900 dark:text-white font-bold">NSHM Knowledge Campus, Durgapur</span> — and yes, balancing code and college like a pro.</div>
-                          <div>By day (and sometimes night), I&apos;m a <span className="text-neutral-900 dark:text-white font-bold">Full Stack Developer Intern</span> at <span className="text-neutral-900 dark:text-white font-bold">Legal Care</span>, crafting scalable systems and shipping features that actually make sense.</div>
-              <div>I don&apos;t just build apps — I engineer experiences. Fluent in <span className="text-neutral-900 dark:text-white font-bold">React</span>, dreaming in <span className="text-neutral-900 dark:text-white font-bold">Next.js</span>, and taming <span className="text-neutral-900 dark:text-white font-bold">MongoDB</span>/<span className="text-neutral-900 dark:text-white font-bold">Postgres</span> like they owe me money.</div>
-              <div>Obsessed with <span className="text-neutral-900 dark:text-white font-bold">AI</span> experiments, <span className="text-neutral-900 dark:text-white font-bold">Web3</span> rabbit holes, and <span className="text-neutral-900 dark:text-white font-bold">DevOps</span> magic (I&apos;ll rant about <span className="text-neutral-900 dark:text-white font-bold">Docker</span> but still containerize your world).</div>
-              <div>I write code that&apos;s cleaner than your morning coffee, scale products without crying, and sprinkle just the right amount of memes to keep the commits flowing.</div>
-              <div>When I&apos;m not coding, you&apos;ll find me breaking limits at <span className="text-neutral-900 dark:text-white font-bold">hackathons</span>, contributing to <span className="text-neutral-900 dark:text-white font-bold">tech communities</span>, and brainstorming the next big thing that can break the internet (but not in production 😎).</div>
+
+        {/* Technical Deep Dive - Refined for Recruiters */}
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-10 bg-card/30 border border-border/40 p-8 md:p-12 rounded-[2.5rem] backdrop-blur-sm">
+          <div className="space-y-4">
+            <h3 className="text-foreground font-bold text-xl tracking-tight">Technical Philosophy</h3>
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              I architect digital products with a focus on <span className="text-foreground font-medium">scalability and production reliability.</span> My expertise spans the complete lifecycle of an application—from designing schema architectures in <span className="text-foreground font-medium">PostgreSQL</span> to deploying containerized microservices.
+            </p>
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              Fluent in the <span className="text-foreground font-medium">React ecosystem</span> and server-side engineering with Node.js, I treat performance as a core feature, not an afterthought.
+            </p>
           </div>
-          <span className="text-base md:text-lg font-semibold text-yellow-600">⚡ If you&apos;re a founder, CTO, or someone hunting for a builder who ships fast, breaks nothing, and vibes hard — you just found your guy.</span><br />
-          <span className="text-base md:text-lg text-neutral-900 dark:text-white">Let&apos;s build something wild together.</span>
+          
+          <div className="space-y-4 md:border-l border-border/40 md:pl-10">
+            <h3 className="text-foreground font-bold text-xl tracking-tight">Engineering Impact</h3>
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              Beyond writing code, I am deeply involved in <span className="text-foreground font-medium">Systems Design</span> and DevOps. Whether it is optimizing CI/CD pipelines or experimenting with Web3 protocols, I strive to build software that is both maintainable and impactful.
+            </p>
+            {/* FIXED: The line below now uses &quot; and &apos; instead of " and ' */}
+            <p className="text-primary font-bold text-sm md:text-base italic leading-relaxed pt-2">
+              &quot;If you are looking for a developer who understands the business logic as clearly as the source code, let&apos;s connect.&quot;
+            </p>
+          </div>
         </div>
-      </section>
-      
-    </>
+
+        {/* --- ANNOTATION: Bottom-Left with Hook Arrow --- */}
+        <div className={`absolute -bottom-24 left-0 md:-left-8 ${caveat.className} text-indigo-500 -rotate-2 max-w-[280px] z-30 flex flex-col items-start`}>
+           <div className="ml-10 mb-1">
+            <svg width="60" height="40" viewBox="0 0 60 40" fill="none" className="stroke-indigo-500/60 stroke-[3]">
+              <path d="M10,35 C10,15 40,5 45,12" strokeLinecap="round" />
+              <path d="M42,5 L45,12 L38,15" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+          <p className="text-2xl md:text-3xl leading-tight font-bold text-left drop-shadow-md">
+            Turning caffeine into <br/>scalable architectures
+          </p>
+        </div>
+      </div>
+    </section>
   );
-} 
+}

@@ -1,11 +1,13 @@
-'use client'
-import Image from 'next/image';
+/* eslint-disable @next/next/no-img-element */
+"use client";
 import React from 'react';
+import { Caveat } from "next/font/google";
+
+const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"] });
 
 interface Tech {
   name: string;
   url: string;
-  color: string;
   logo: string;
 }
 
@@ -13,103 +15,61 @@ interface TechStackProps {
   techStack: Tech[];
 }
 
-const TechStack: React.FC<TechStackProps> = ({ techStack }) => {
-  
+const TechStack: React.FC<TechStackProps> = ({ techStack = [] }) => {
   return (
-    <section className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Top Divider and Section Label */}
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex-1 border-t border-neutral-300 dark:border-neutral-700 mr-4" />
-        <span className="text-xs tracking-widest text-neutral-900 dark:text-white uppercase">Tech Stack</span>
-        <div className="flex-1 border-t border-neutral-300 dark:border-neutral-700 ml-4" />
+    <section 
+      id="tech-stack" 
+      className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-32 md:pb-40 bg-background text-foreground"
+    >
+      <div className="flex flex-col items-center mb-12 relative">
+        <h2 className={`${caveat.className} text-2xl md:text-4xl text-primary tracking-tight`}>
+          Technical Arsenal
+        </h2>
+        <svg width="120" height="10" viewBox="0 0 140 12" fill="none" className="text-primary/30 mt-1">
+          <path d="M5 7C30 5 110 5 135 8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeDasharray="1 2" />
+        </svg>
       </div>
-             
-      {/* Tech Badges Row */}
-      <div className="w-full flex flex-wrap gap-2 sm:gap-3 md:gap-4 items-center justify-center sm:justify-start bg-transparent py-1 sm:py-2">
-        {techStack.map((tech, index) => (
-          <a
-            key={index}
-            target="_blank"
-            rel="noopener noreferrer"
-            href={tech.url}
-            className="flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-white text-xs sm:text-sm font-medium transition hover:bg-neutral-200 dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-primary/50"
-          >
-            <Image
-              src={tech.logo}
-              alt={`${tech.name} logo`}
-              width={18}
-              height={18}
-              className={`object-contain ${
-                tech.name === "Express.js" || 
-                tech.name === "Three.js" || 
-                tech.name === "Prisma" || 
-                tech.name === "GitHub" || 
-                tech.name === "AWS" ||
-                tech.name === "Prometheus" ||
-                tech.name === "Loki" ||
-                tech.name === "Grafana" ||
-                tech.name === "GCP" ||
-                tech.name === "Terraform" ||
-                tech.name === "Jenkins"
-                  ? "dark:invert" 
-                  : ""
-              }`}
-            />
-            {tech.name}
-          </a>
-        ))}
+
+      <div className="relative">
+        <div className="flex flex-wrap gap-2 md:gap-3 items-center justify-center bg-card/20 border border-border/30 p-5 md:p-8 rounded-[2rem]">
+          {techStack && techStack.map((tech, index) => (
+            <a
+              key={`${tech.name}-${index}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              href={tech.url}
+              className="group flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border/50 bg-muted/30 text-foreground text-xs md:text-sm font-semibold transition-all hover:border-primary/40 hover:bg-background hover:scale-105"
+            >
+              <div className="relative w-4 h-4 md:w-5 md:h-5 flex items-center justify-center">
+                <img
+                  src={tech.logo}
+                  alt={`${tech.name} logo`}
+                  className={`w-full h-full object-contain transition-all duration-300 ${
+                    ["Express JS", "Prisma", "GitHub", "AWS", "Next JS", "Vercel", "Nginx"].includes(tech.name) ? "dark:invert" : ""
+                  }`}
+                />
+              </div>
+              <span className="tracking-tight">{tech.name}</span>
+            </a>
+          ))}
+        </div>
+
+        {/* Annotation Hook Arrow */}
+        <div className={`absolute -bottom-24 left-2 md:-left-4 ${caveat.className} text-indigo-500 -rotate-2 max-w-[240px] z-30 flex flex-col items-start scale-90 md:scale-100`}>
+           <div className="ml-6 mb-1">
+            <svg width="50" height="35" viewBox="0 0 60 40" fill="none" className="stroke-indigo-500/50 stroke-[3]">
+              <path d="M10,35 C10,15 35,5 42,10" strokeLinecap="round" />
+              <path d="M38,4 L42,10 L35,14" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+          {/* Replaced & with &amp; for strict XML/HTML compliance */}
+          <p className="text-xl md:text-2xl leading-tight font-bold text-left">
+            Optimizing for scale &amp; <br/> production reliability
+          </p>
+        </div>
       </div>
     </section>
   );
 };
-
-// Example usage with the new technologies added
-export const sampleTechStack: Tech[] = [
-  // Existing technologies (add your current ones here)
-  
-  // New additions
-  {
-    name: "Prometheus",
-    url: "https://prometheus.io/",
-    color: "#E6522C",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg"
-  },
-  {
-    name: "Loki",
-    url: "https://grafana.com/oss/loki/",
-    color: "#F46800",
-    logo: "https://grafana.com/static/assets/img/logos/grafana-loki.svg"
-  },
-  {
-    name: "Grafana",
-    url: "https://grafana.com/",
-    color: "#F46800",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg"
-  },
-  {
-    name: "AWS",
-    url: "https://aws.amazon.com/",
-    color: "#FF9900",
-    logo: "https://cdn.worldvectorlogo.com/logos/aws-2.svg"
-  },
-  {
-    name: "GCP",
-    url: "https://cloud.google.com/",
-    color: "#4285F4",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
-  },
-  {
-    name: "Terraform",
-    url: "https://www.terraform.io/",
-    color: "#7C3DC1",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg"
-  },
-  {
-    name: "Jenkins",
-    url: "https://www.jenkins.io/",
-    color: "#D33833",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg"
-  }
-];
 
 export default TechStack;
