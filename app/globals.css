@@ -126,6 +126,27 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* --- MODERN SCROLLBAR STYLES --- */
+  ::-webkit-scrollbar {
+    width: 6px;   /* Vertical width */
+    height: 6px;  /* Horizontal height */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    /* Use a mix of your muted color and transparency */
+    background-color: color-mix(in srgb, var(--muted-foreground), transparent 80%);
+    border-radius: 10px;
+    transition: background-color 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in srgb, var(--muted-foreground), transparent 50%);
+  }
 }
 
 /* Theme transition overlay: liquid-like fill from top to bottom */

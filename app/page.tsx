@@ -2,13 +2,15 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Caveat } from "next/font/google";
-import { useLoading } from "@/lib/loading-context"; //Import global context
+import { useLoading } from "@/lib/loading-context";
 
 import Hero from "@/components/ui/hero";
 import Experience from "@/components/ui/Experience";
 import Projects from "@/components/ui/Projects";
 import TechStack from "@/components/ui/TechStack";
 import Footer from "@/components/ui/Footer";
+import GithubContributions from "@/components/ui/GithubContributions";
+import AboutSection from "@/components/ui/AboutSection"; // Import the new section
 
 const caveat = Caveat({
   subsets: ["latin"],
@@ -16,11 +18,11 @@ const caveat = Caveat({
 });
 
 export default function Home() {
-  const { setIsLoading } = useLoading(); // Get the setter for global loading state
+  const { setIsLoading } = useLoading();
   const [showIntro, setShowIntro] = useState(true);
   const [currentLanguage, setCurrentLanguage] = useState(0);
 
-  // 3. Define the Tech Stack Data so icons appear
+  // Tech Stack Data
   const techStackData = [
     { name: "HTML", url: "https://developer.mozilla.org", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
     { name: "CSS", url: "https://developer.mozilla.org", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
@@ -69,7 +71,7 @@ export default function Home() {
       } else {
         timeoutId = setTimeout(() => {
           setShowIntro(false);
-          setIsLoading(false); // This triggers the Navbar to appear!
+          setIsLoading(false);
         }, 300);
       }
     };
@@ -79,7 +81,6 @@ export default function Home() {
     return () => clearTimeout(timeoutId);
   }, [greetings, setIsLoading]);
 
-  // INTRO LOADER
   if (showIntro) {
     return (
       <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background">
@@ -116,7 +117,6 @@ export default function Home() {
     );
   }
 
-  // NORMAL PAGE CONTENT
   return (
     <>
       <main className="flex min-h-screen flex-col items-center justify-start pt-8 overflow-x-hidden">
@@ -124,9 +124,11 @@ export default function Home() {
 
         <div className="container mx-auto w-full max-w-4xl px-4 mt-20">
           <div className="flex flex-col gap-32">
+            {/* Added AboutSection here, before GithubContributions */}
+            <AboutSection />
+            <GithubContributions />
             <Experience />
             <Projects />
-            {/* Pass the data to the component */}
             <TechStack techStack={techStackData} /> 
           </div>
         </div>

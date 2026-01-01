@@ -1,8 +1,23 @@
 "use client";
 import Image from "next/image";
 import { Caveat } from "next/font/google";
+import { FileText } from "lucide-react";
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"] });
+
+// Custom X (formerly Twitter) Logo Component
+const XIcon = ({ className }: { className?: string }) => (
+  <svg
+    role="img"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor"
+    className={className}
+  >
+    <title>X</title>
+    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+  </svg>
+);
 
 export default function Hero() {
   return (
@@ -86,11 +101,25 @@ export default function Hero() {
         </p>
         
         <div className="flex flex-row gap-4">
-          <a href="#" className="px-8 py-3 bg-foreground text-background rounded-full font-bold text-sm md:text-base hover:opacity-90 transition-all active:scale-95">
-            Resume
+          <a 
+            href="https://drive.google.com/file/d/181WYd5PwA8iQGCR2Zje0ZNmwageZzThn/view?usp=drive_link" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 md:px-8 py-3 bg-foreground text-background rounded-full font-bold text-sm md:text-base hover:opacity-90 transition-all active:scale-95 flex items-center gap-2 shadow-lg hover:shadow-xl"
+          >
+            <FileText className="w-4 h-4 md:w-5 md:h-5" />
+            <span>Resume</span>
           </a>
-          <a href="#" className="px-8 py-3 border border-border bg-background text-foreground rounded-full font-bold text-sm md:text-base hover:bg-muted transition-all active:scale-95">
-            Connect
+          
+          <a 
+            href="https://x.com/soumadityapal" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 md:px-8 py-3 border border-border bg-background text-foreground rounded-full font-bold text-sm md:text-base hover:bg-muted transition-all active:scale-95 flex items-center gap-2 hover:border-foreground/50"
+          >
+            {/* Using the new X Icon Component */}
+            <XIcon className="w-4 h-4 md:w-5 md:h-5" />
+            <span>Connect</span>
           </a>
         </div>
       </div>
