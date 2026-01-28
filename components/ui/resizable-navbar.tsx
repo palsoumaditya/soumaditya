@@ -7,9 +7,12 @@ import {
   useScroll, 
   useMotionValueEvent, 
 } from "framer-motion";
- 
+import { Caveat } from "next/font/google"; // Import Caveat
+
 import React, { useRef, useState } from "react"; 
 import Link from "next/link"; // Add this import at the top with other imports
+
+const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"] });
  
 interface NavbarProps { 
   children: React.ReactNode; 
@@ -115,7 +118,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         damping: 50, 
       }} 
       style={{ 
-        minWidth: "800px",
+        minWidth: "auto",
       }} 
       className={cn( 
         "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent", 
@@ -135,7 +138,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
     <motion.div 
       onMouseLeave={() => setHovered(null)} 
       className={cn( 
-        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2", 
+        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-lg font-bold text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2 " + caveat.className, 
         className, 
       )} 
     > 
@@ -256,6 +259,7 @@ export const NavbarLogo = ({ className }: NavbarLogoProps) => {
   return (
     <Link href="/" className={cn("relative z-20 flex items-center", className)}>
       <IconHome2 className="h-6 w-6 text-neutral-700 dark:text-neutral-200 mr-2" />
+      <span className={`text-xl font-bold text-neutral-700 dark:text-neutral-200 ${caveat.className}`}>Home</span>
     </Link>
   );
 };
