@@ -8,9 +8,17 @@ import { Caveat } from "next/font/google";
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"] });
 
 export default function GithubContributions() {
-  const { theme } = useTheme();
-  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
+  const { theme, resolvedTheme } = useTheme();
+  // const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light"); // REMOVED
   const [selectedYear, setSelectedYear] = useState<number | "last">("last");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Use resolvedTheme directly for calendar, default to light if not mounted to match server
+  const calendarTheme = mounted && resolvedTheme ? resolvedTheme : "light";
 
   const currentYear = new Date().getFullYear();
   const years = [currentYear, currentYear - 1, currentYear - 2, currentYear - 3];
@@ -21,16 +29,7 @@ export default function GithubContributions() {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  useEffect(() => {
-    if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
-      setResolvedTheme(systemTheme);
-    } else {
-      setResolvedTheme(theme as "light" | "dark");
-    }
-  }, [theme]);
+  // REMOVED manual useEffect for theme detection
 
   const onMouseDown = (e: React.MouseEvent) => {
     if (!scrollContainerRef.current) return;
@@ -91,12 +90,12 @@ export default function GithubContributions() {
              <GitHubCalendar
               username="palsoumaditya"
               year={selectedYear}
-              colorScheme={resolvedTheme}
+              colorScheme={calendarTheme as "light" | "dark"}
               blockSize={12} // Reduced slightly to fit better
               blockMargin={4}
               fontSize={12}  // Reduced font slightly to prevent label clipping
               style={{
-                color: resolvedTheme === "dark" ? "#e5e7eb" : "#1f2937",
+                color: calendarTheme === "dark" ? "#e5e7eb" : "#1f2937",
               }}
             />
           </div>

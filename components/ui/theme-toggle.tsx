@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import ThemeTransition from "@/components/ui/ThemeTransition";
 
 export function ThemeToggle({ className }: { className?: string }) {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [transitioning, setTransitioning] = useState(false);
   const [nextTheme, setNextTheme] = useState<"light" | "dark" | null>(null);
@@ -17,10 +17,10 @@ export function ThemeToggle({ className }: { className?: string }) {
 
   if (!mounted) return null;
 
-  const isDarkMode = theme === "dark";
+  const isDarkMode = resolvedTheme === "dark";
 
   const handleToggle = () => {
-    const isDarkMode = theme === "dark";
+    const isDarkMode = resolvedTheme === "dark";
     const target = isDarkMode ? "light" : "dark";
     setNextTheme(target);
     setTransitioning(true);
