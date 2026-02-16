@@ -25,7 +25,7 @@ export default function AboutSection() {
       <div className="relative max-w-3xl mx-auto">
         {/* Narrative Text - Fixed unescaped entities */}
         <p className="text-lg md:text-2xl text-muted-foreground leading-relaxed font-light">
-          I don&apos;t just write code; I <span className="text-foreground font-medium">architect digital ecosystems</span>. 
+          As a <span className="text-foreground font-medium">Freelance Website Developer</span>, I don&apos;t just write code; I <span className="text-foreground font-medium">architect digital ecosystems</span>. 
           My work operates at the intersection of high-performance logic and intuitive design, transforming chaotic requirements into elegant, scalable engines. 
           I focus on the expensive problems—performance, reliability, and scale—building systems that don&apos;t just function, but thrive under pressure. 
           You&apos;ve seen the interface, but{" "}

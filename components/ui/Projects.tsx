@@ -102,7 +102,7 @@ const Projects: React.FC = () => {
             <div className="w-full md:w-5/12 h-56 md:h-auto relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 bg-gray-50 dark:bg-transparent">
                  <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={`Preview of ${project.title} - ${project.description.substring(0, 50)}...`}
                     fill
                     className="object-cover"
                  />

@@ -29,7 +29,7 @@ const Experience: React.FC = () => {
           <div className="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0 bg-white rounded-2xl overflow-hidden shadow-sm border border-border/10">
             <Image
               src="/me/LEGALCARE.png"
-              alt="Legal Care"
+              alt="Legal Care - Full Stack Developer Intern Experience"
               fill
               className="object-contain p-3"
             />

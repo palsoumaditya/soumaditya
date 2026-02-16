@@ -1,10 +1,18 @@
-"use client";
 import Image from "next/image";
 import React from "react";
 import { Caveat, Inter } from "next/font/google";
+import type { Metadata } from "next";
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"] });
 const inter = Inter({ subsets: ["latin"] }); 
+
+export const metadata: Metadata = {
+  title: "About Me",
+  description: "Learn more about Soumaditya Pal, a Computer Science Engineer and Full Stack Developer with a passion for scalable systems and digital ecosystems.",
+  alternates: {
+    canonical: '/about',
+  },
+};
 
 export default function About() {
   return (
