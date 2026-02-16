@@ -57,7 +57,7 @@ export default function GithubContributions() {
   return (
     <section 
       id="contributions" 
-      className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-background text-foreground transition-colors duration-300"
+      className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-background text-foreground transition-colors duration-300"
     >
       {/* Signature Header */}
       <div className="flex flex-col items-center mb-10 relative">

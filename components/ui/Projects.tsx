@@ -68,7 +68,7 @@ const Projects: React.FC = () => {
   return (
     <section
       id="projects"
-      className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 pb-20 md:pb-24 bg-background text-foreground transition-colors duration-300"
+      className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 pb-12 md:pb-16 bg-background text-foreground transition-colors duration-300"
     >
       {/* Section Header */}
       <div className="flex flex-col items-center mb-10 relative">

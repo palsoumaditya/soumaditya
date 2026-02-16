@@ -9,7 +9,7 @@ const Experience: React.FC = () => {
   return (
     <section 
       id="experience" 
-      className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-32 md:pb-40 bg-background text-foreground transition-colors duration-300"
+      className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 md:pb-24 bg-background text-foreground transition-colors duration-300"
     >
       
       {/* Section Header */}

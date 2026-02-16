@@ -17,20 +17,22 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Soumaditya Pal - Full Stack Developer & Software Engineer",
-    template: "%s | Soumaditya Pal"
+    default: "Soumaditya Pal - Full Stack Developer | Website Developer | Freelancer",
+    template: "%s | Soumaditya Pal - Full Stack Developer & Freelancer"
   },
-  description: "Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Computer Science student passionate about building scalable applications and innovative solutions.",
+  description: "Soumaditya Pal is a Full Stack Developer, Website Developer, and Freelancer specializing in React, Next.js, Node.js, and modern web technologies. Hire a professional for your web development needs.",
   keywords: [
     "Soumaditya Pal",
     "Full Stack Developer",
+    "Website Developer",
+    "Freelancer",
+    "Software Engineer",
     "React Developer",
     "Next.js Developer",
     "Node.js Developer",
-    "Software Engineer",
+    "Backend Developer",
     "Web Developer",
     "Frontend Developer",
-    "Backend Developer",
     "JavaScript",
     "TypeScript",
     "MongoDB",
@@ -41,7 +43,9 @@ export const metadata: Metadata = {
     "Legal Care",
     "Web3",
     "AI",
-    "DevOps"
+    "DevOps",
+    "Hire Developer",
+    "Freelance Web Developer"
   ],
   authors: [{ name: "Soumaditya Pal" }],
   creator: "Soumaditya Pal",
@@ -59,22 +63,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://soumadityapal.in',
-    title: 'Soumaditya Pal - Full Stack Developer & Software Engineer',
-    description: 'Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Computer Science student passionate about building scalable applications.',
+    title: 'Soumaditya Pal - Full Stack Developer | Website Developer | Freelancer',
+    description: 'Soumaditya Pal is a Full Stack Developer, Website Developer, and Freelancer specializing in React, Next.js, Node.js, and modern web technologies.',
     siteName: 'Soumaditya Pal Portfolio',
     images: [
       {
         url: '/me/soumaditya.jpg',
         width: 1200,
         height: 630,
-        alt: 'Soumaditya Pal - Full Stack Developer',
+        alt: 'Soumaditya Pal - Full Stack Developer & Freelancer',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Soumaditya Pal - Full Stack Developer & Software Engineer',
-    description: 'Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Computer Science student passionate about building scalable applications.',
+    title: 'Soumaditya Pal - Full Stack Developer | Website Developer | Freelancer',
+    description: 'Soumaditya Pal is a Full Stack Developer, Website Developer, and Freelancer specializing in React, Next.js, Node.js, and modern web technologies.',
     images: ['/me/soumaditya.jpg'],
     creator: '@soumaditya_pal',
   },
@@ -134,10 +138,17 @@ export default function RootLayout({
                 "@type": "EducationalOrganization",
                 "name": "NSHM Knowledge Campus, Durgapur"
               },
-              "worksFor": {
-                "@type": "Organization",
-                "name": "Legal Care"
-              },
+              "worksFor": [
+                {
+                   "@type": "Organization",
+                   "name": "Legal Care"
+                },
+                {
+                   "@type": "Organization",
+                   "name": "Freelance",
+                   "description": "Freelance Website Developer & Full Stack Developer"
+                }
+              ],
               "knowsAbout": [
                 "React",
                 "Next.js",

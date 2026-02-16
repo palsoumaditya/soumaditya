@@ -10,7 +10,7 @@ export default function AboutSection() {
   return (
     <section 
       id="about-preview" 
-      className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-background text-foreground transition-colors duration-300"
+      className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-background text-foreground transition-colors duration-300"
     >
       {/* Signature Header */}
       <div className="flex flex-col items-center mb-12 relative">

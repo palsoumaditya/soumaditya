@@ -122,8 +122,8 @@ export default function Home() {
       <main className="flex min-h-screen flex-col items-center justify-start pt-8 overflow-x-hidden">
         <Hero />
 
-        <div className="container mx-auto w-full max-w-4xl px-4 mt-20">
-          <div className="flex flex-col gap-32">
+        <div className="container mx-auto w-full max-w-4xl px-4 mt-10">
+          <div className="flex flex-col gap-16">
             {/* Added AboutSection here, before GithubContributions */}
             <AboutSection />
             <GithubContributions />
