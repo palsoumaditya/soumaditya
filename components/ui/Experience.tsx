@@ -10,7 +10,7 @@ const experiences = [
     company: "Emergence Mobility Technologies, Inc",
     role: "Software Engineer Intern",
     location: "Remote",
-    period: "Mar 2026 - Present",
+    period: "Mar 2026 - June 2026",
     image: "/me/emergencesoftware_logo.jpg",
     alt: "Emergence Mobility Technologies experience",
     details: [
