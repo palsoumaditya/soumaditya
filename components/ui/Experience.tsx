@@ -1,11 +1,23 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Caveat } from "next/font/google";
+import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"] });
 
-const experiences = [
+interface ExperienceItem {
+  company: string;
+  role: string;
+  location: string;
+  period: string;
+  image: string;
+  alt: string;
+  details: React.ReactNode[];
+}
+
+const experiences: ExperienceItem[] = [
   {
     company: "Emergence Mobility Technologies, Inc",
     role: "Software Engineer Intern",
@@ -94,6 +106,111 @@ const experiences = [
   },
 ];
 
+const INITIAL_POINTS_COUNT = 2;
+
+const ExperienceCard: React.FC<{ experience: ExperienceItem }> = ({
+  experience,
+}) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const hasMore = experience.details.length > INITIAL_POINTS_COUNT;
+  const initialDetails = experience.details.slice(0, INITIAL_POINTS_COUNT);
+  const hiddenDetails = experience.details.slice(INITIAL_POINTS_COUNT);
+
+  return (
+    <div className="group relative flex flex-col md:flex-row items-start bg-card border border-border/40 rounded-3xl p-6 md:p-10 hover:border-primary/30 transition-all duration-300 shadow-xl">
+      <div className="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0 bg-white rounded-2xl overflow-hidden shadow-sm border border-border/10">
+        <Image
+          src={experience.image}
+          alt={experience.alt}
+          fill
+          className="object-contain p-3"
+        />
+      </div>
+
+      <div className="flex-1 md:ml-10 mt-6 md:mt-0 w-full">
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 mb-6">
+          <div>
+            <h3 className="text-xl md:text-2xl font-black tracking-tight leading-tight">
+              {experience.company}
+            </h3>
+            <p className="text-primary font-bold text-sm md:text-base italic uppercase tracking-wider mt-2">
+              {experience.role}{" "}
+              <span className="text-muted-foreground font-normal normal-case ml-2">
+                - {experience.location}
+              </span>
+            </p>
+          </div>
+          <span
+            className={`text-base md:text-lg ${caveat.className} text-muted-foreground whitespace-nowrap`}
+          >
+            {experience.period}
+          </span>
+        </div>
+
+        <ul className="grid grid-cols-1 gap-4 text-sm md:text-base text-muted-foreground leading-relaxed">
+          {initialDetails.map((detail, index) => (
+            <li key={index} className="flex gap-3">
+              <span className="text-primary font-bold text-lg select-none">
+                {String(index + 1).padStart(2, "0")}{" "}
+              </span>
+              <span>{detail}</span>
+            </li>
+          ))}
+        </ul>
+
+        {hasMore && (
+          <AnimatePresence initial={false}>
+            {isExpanded && (
+              <motion.div
+                key="extra-details"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="overflow-hidden"
+              >
+                <ul className="grid grid-cols-1 gap-4 pt-4 text-sm md:text-base text-muted-foreground leading-relaxed">
+                  {hiddenDetails.map((detail, index) => {
+                    const pointNumber = INITIAL_POINTS_COUNT + index + 1;
+                    return (
+                      <li key={pointNumber} className="flex gap-3">
+                        <span className="text-primary font-bold text-lg select-none">
+                          {String(pointNumber).padStart(2, "0")}{" "}
+                        </span>
+                        <span>{detail}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        )}
+
+        {hasMore && (
+          <div className="mt-6 pt-4 border-t border-border/40 dark:border-white/10 flex items-center justify-center">
+            <button
+              type="button"
+              onClick={() => setIsExpanded((prev) => !prev)}
+              aria-expanded={isExpanded}
+              className="group/btn relative inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs md:text-sm font-semibold tracking-wide text-foreground/90 hover:text-foreground bg-muted/50 hover:bg-muted border border-border/80 hover:border-emerald-500/50 dark:hover:border-emerald-400/50 transition-all duration-300 shadow-xs hover:shadow-md cursor-pointer select-none active:scale-95"
+            >
+              <span>{isExpanded ? "Show less" : "Read more"}</span>
+              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-background border border-border/60 text-muted-foreground group-hover/btn:bg-emerald-500 group-hover/btn:text-white group-hover/btn:border-emerald-500 transition-all duration-300">
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-300 ${
+                    isExpanded ? "rotate-180" : "group-hover/btn:translate-y-0.5"
+                  }`}
+                />
+              </span>
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const Experience: React.FC = () => {
   return (
     <section
@@ -125,51 +242,7 @@ const Experience: React.FC = () => {
 
       <div className="relative flex flex-col gap-8">
         {experiences.map((experience) => (
-          <div
-            key={experience.company}
-            className="group relative flex flex-col md:flex-row items-start bg-card border border-border/40 rounded-3xl p-6 md:p-10 hover:border-primary/30 transition-all duration-300 shadow-xl"
-          >
-            <div className="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0 bg-white rounded-2xl overflow-hidden shadow-sm border border-border/10">
-              <Image
-                src={experience.image}
-                alt={experience.alt}
-                fill
-                className="object-contain p-3"
-              />
-            </div>
-
-            <div className="flex-1 md:ml-10 mt-6 md:mt-0">
-              <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 mb-6">
-                <div>
-                  <h3 className="text-xl md:text-2xl font-black tracking-tight leading-tight">
-                    {experience.company}
-                  </h3>
-                  <p className="text-primary font-bold text-sm md:text-base italic uppercase tracking-wider mt-2">
-                    {experience.role}{" "}
-                    <span className="text-muted-foreground font-normal normal-case ml-2">
-                      - {experience.location}
-                    </span>
-                  </p>
-                </div>
-                <span
-                  className={`text-base md:text-lg ${caveat.className} text-muted-foreground whitespace-nowrap`}
-                >
-                  {experience.period}
-                </span>
-              </div>
-
-              <ul className="grid grid-cols-1 gap-4 text-sm md:text-base text-muted-foreground leading-relaxed">
-                {experience.details.map((detail, index) => (
-                  <li key={index} className="flex gap-3">
-                    <span className="text-primary font-bold text-lg">
-                      {String(index + 1).padStart(2, "0")}{" "}
-                    </span>
-                    <span>{detail}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <ExperienceCard key={experience.company} experience={experience} />
         ))}
 
         <div
