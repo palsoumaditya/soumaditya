@@ -13,14 +13,20 @@ import {
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLoading } from "@/lib/loading-context";
 
 export default function NavbarWrapper() {
-  const { isLoading } = useLoading(); // 👈 KEY LINE
+  const { isLoading } = useLoading();
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
-  // ❌ Do NOT render navbar during intro loader
-  if (isLoading) return null;
+  // If the user lands on or navigates to any page other than "/",
+  // we do not block the navbar even if intro animation hasn't run.
+  const isHomePage = pathname === "/";
+  if (isHomePage && isLoading) return null;
+
+  const isAboutPage = pathname === "/about";
 
   const navItems = [
     { name: "Home", link: "/" },
@@ -30,7 +36,7 @@ export default function NavbarWrapper() {
   ];
 
   return (
-    <Navbar>
+    <Navbar alwaysVisible={isAboutPage}>
       {/* Desktop Navigation */}
       <NavBody>
         <NavbarLogo />

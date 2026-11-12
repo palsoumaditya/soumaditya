@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "About Me",
-  description: "Learn more about Soumaditya Pal, a Computer Science Engineer and Full Stack Developer with a passion for scalable systems and digital ecosystems.",
+  description: "Learn more about Soumaditya Pal, a Software Engineer specializing in backend development, distributed systems, and real-time applications.",
   alternates: {
     canonical: '/about',
   },
@@ -31,11 +31,12 @@ export default function About() {
       </div>
 
       <div className="relative">
-        <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+        {/* Top Section: Circular Image and Side-by-Side Hero Header */}
+        <div className="flex flex-col sm:flex-row items-center sm:items-center gap-8 sm:gap-10 md:gap-14">
           
-          {/* Left: Profile Image with Professional Border */}
-          <div className="relative group">
-            <div className="relative w-40 h-40 md:w-56 md:h-56 rounded-[2.5rem] overflow-hidden border border-border bg-card shadow-2xl z-10 transition-all duration-500 group-hover:border-primary/50">
+          {/* Left: Round Profile Image */}
+          <div className="relative group shrink-0">
+            <div className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-full overflow-hidden border-2 border-border bg-card shadow-xl z-10 transition-all duration-500 group-hover:border-primary/60">
               <Image
                 src="/me/soumaditya.jpg"
                 alt="Soumaditya Pal"
@@ -44,28 +45,32 @@ export default function About() {
                 priority
               />
             </div>
-            {/* Minimalist accent behind image */}
-            <div className="absolute -inset-2 border border-primary/10 rounded-[2.8rem] rotate-3 group-hover:rotate-0 transition-transform duration-500" />
+            {/* Subtle glow / circular accent behind image */}
+            <div className="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-primary/20 via-transparent to-primary/10 opacity-70 blur-sm group-hover:opacity-100 transition-opacity duration-500" />
           </div>
 
-          {/* Right: Identity Content */}
-          <div className="flex-1 text-center md:text-left">
-            <p className={`${caveat.className} text-2xl text-primary mb-1`}>
-              Full Stack Engineer
+          {/* Right: Text Display Side by Side */}
+          <div className="flex-1 text-center sm:text-left">
+            <p className={`${caveat.className} text-xl sm:text-2xl text-primary mb-1`}>
+              Software Engineer | Backend & Distributed Systems
             </p>
-            <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 text-foreground">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-3 text-foreground">
               Soumaditya Pal
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground font-medium tracking-wide mb-6">
-              Specializing in Distributed Systems & Modern Web Architectures
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-medium leading-relaxed">
+              Building reliable backend systems, distributed applications, and real-time experiences.
             </p>
-            
-            <div className="space-y-5 text-base md:text-lg leading-relaxed text-muted-foreground">
-              <p>
-                I am a <span className="text-foreground font-semibold">Final-year Computer Science Engineer</span> at NSHM Durgapur, currently operating as a <span className="text-foreground font-semibold">Full Stack Developer Intern at Legal Care.</span> My focus lies in bridging the gap between complex backend logic and high-performance user interfaces.
-              </p>
-            </div>
           </div>
+        </div>
+
+        {/* Full-width Narrative & Journey Text Below */}
+        <div className="mt-10 sm:mt-12 space-y-5 text-base md:text-lg leading-relaxed text-muted-foreground">
+          <p>
+            I am a Software Engineer specializing in <span className="text-foreground font-semibold">Backend Development, Distributed Systems, and Real-Time Applications</span>. I have professional experience building backend services with <span className="text-foreground font-semibold">Node.js and TypeScript</span>, most recently working as a Software Engineer Intern at <span className="text-foreground font-semibold">Emergence Mobility Technologies</span> and previously as a Full Stack Developer Intern at <span className="text-foreground font-semibold">Legal Care</span>.
+          </p>
+          <p>
+            My engineering journey revolves around understanding how systems work behind the interface — from handling concurrent operations and asynchronous workloads to building applications that remain reliable under changing conditions.
+          </p>
         </div>
 
         {/* Technical Deep Dive - Refined for Recruiters */}
@@ -73,21 +78,29 @@ export default function About() {
           <div className="space-y-4">
             <h3 className="text-foreground font-bold text-xl tracking-tight">Technical Philosophy</h3>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-              I architect digital products with a focus on <span className="text-foreground font-medium">scalability and production reliability.</span> My expertise spans the complete lifecycle of an application—from designing schema architectures in <span className="text-foreground font-medium">PostgreSQL</span> to deploying containerized microservices.
+              I believe good software engineering goes beyond making things work. It is about building systems that remain <span className="text-foreground font-medium">reliable, scalable, and maintainable as complexity grows.</span>
             </p>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-              Fluent in the <span className="text-foreground font-medium">React ecosystem</span> and server-side engineering with Node.js, I treat performance as a core feature, not an afterthought.
+              My work spans <span className="text-foreground font-medium">Node.js, TypeScript, PostgreSQL, Redis, and Valkey</span>, with hands-on experience in background job processing using BullMQ, caching strategies, database connection pooling, and real-time communication using WebSockets and Server-Sent Events.
+            </p>
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              I focus on backend architecture, concurrency, state synchronization, and designing systems where performance and reliability are built into the foundation.
             </p>
           </div>
           
           <div className="space-y-4 md:border-l border-border/40 md:pl-10">
             <h3 className="text-foreground font-bold text-xl tracking-tight">Engineering Impact</h3>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-              Beyond writing code, I am deeply involved in <span className="text-foreground font-medium">Systems Design</span> and DevOps. Whether it is optimizing CI/CD pipelines or experimenting with Web3 protocols, I strive to build software that is both maintainable and impactful.
+              I enjoy solving problems that go beyond traditional CRUD applications.
             </p>
-            {/* FIXED: The line below now uses &quot; and &apos; instead of " and ' */}
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              From building <span className="text-foreground font-medium">FocusKaro</span>, a high-availability task monitoring system with heartbeat-based failure detection, to developing <span className="text-foreground font-medium">Lyner</span>, a distributed collaboration engine powered by CRDTs and event sourcing, I actively explore the engineering challenges behind distributed and real-time systems.
+            </p>
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              Whether it is handling concurrent operations, recovering failed background jobs, or synchronizing state across multiple clients, I aim to understand the problem at the system level before writing the solution.
+            </p>
             <p className="text-primary font-bold text-sm md:text-base italic leading-relaxed pt-2">
-              &quot;If you are looking for a developer who understands the business logic as clearly as the source code, let&apos;s connect.&quot;
+              &quot;I don&apos;t just build features. I build the systems that make those features reliable.&quot;
             </p>
           </div>
         </div>

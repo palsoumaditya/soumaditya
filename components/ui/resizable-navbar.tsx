@@ -17,6 +17,7 @@ const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"] });
 interface NavbarProps { 
   children: React.ReactNode; 
   className?: string; 
+  alwaysVisible?: boolean;
 } 
  
 interface NavBodyProps { 
@@ -68,22 +69,24 @@ interface NavbarButtonProps {
   onClick?: () => void;
 }
  
-export const Navbar = ({ children, className }: NavbarProps) => { 
+export const Navbar = ({ children, className, alwaysVisible = false }: NavbarProps) => { 
   const ref = useRef<HTMLDivElement>(null); 
   const { scrollY } = useScroll({ 
     target: ref, 
     offset: ["start start", "end start"], 
   }); 
-  const [visible, setVisible] = useState<boolean>(false); 
- 
+  const [visible, setVisible] = useState<boolean>(alwaysVisible); 
+
   useMotionValueEvent(scrollY, "change", (latest) => { 
-    if (latest > 100) { 
+    if (alwaysVisible) {
+      setVisible(true);
+    } else if (latest > 100) { 
       setVisible(true); 
     } else { 
       setVisible(false); 
     } 
   }); 
- 
+
   return ( 
     <motion.div 
       ref={ref} 
@@ -93,7 +96,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
         React.isValidElement(child) 
           ? React.cloneElement( 
               child as React.ReactElement<{ visible?: boolean }>, 
-              { visible }, 
+              { visible: alwaysVisible || visible }, 
             ) 
           : child, 
       )} 
