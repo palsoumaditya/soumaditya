@@ -1,18 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
 import { Caveat, Inter } from "next/font/google";
-import type { Metadata } from "next";
+import { ProjectPreviewBadge } from "@/components/ui/ProjectPreviewBadge";
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"] });
 const inter = Inter({ subsets: ["latin"] }); 
-
-export const metadata: Metadata = {
-  title: "About Me",
-  description: "Learn more about Soumaditya Pal, a Software Engineer specializing in backend development, distributed systems, and real-time applications.",
-  alternates: {
-    canonical: '/about',
-  },
-};
 
 export default function About() {
   return (
@@ -118,13 +112,27 @@ export default function About() {
             </p>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
               From building{" "}
-              <span className="font-semibold text-indigo-600 dark:text-indigo-400">
-                FocusKaro
-              </span>
+              <ProjectPreviewBadge
+                name="FocusKaro"
+                badgeLabel="FocusKaro • Task Monitor"
+                accentColor="indigo"
+                title="FocusKaro"
+                tagline="High-availability task monitoring with heartbeat failure detection, Pomodoro session persistence, and zero-data-loss architecture."
+                imageSrc="/project/Focuskaro.png"
+                liveUrl="https://focuskaro.soumadityapal.in/"
+                githubUrl="https://github.com/palsoumaditya/Focuskaro.git"
+              />
               , a high-availability task monitoring system with heartbeat-based failure detection, to developing{" "}
-              <span className="font-semibold text-emerald-600 dark:text-emerald-400">
-                Lyner
-              </span>
+              <ProjectPreviewBadge
+                name="Lyner"
+                badgeLabel="Lyner • Collaboration Engine"
+                accentColor="emerald"
+                title="Lyner"
+                tagline="Distributed link management and collaboration engine with real-time state synchronization, high performance, and event sourcing."
+                imageSrc="/project/Lyner.png"
+                liveUrl="https://lyner.soumadityapal.in/"
+                githubUrl="https://github.com/palsoumaditya/Lyner.git"
+              />
               , a distributed collaboration engine powered by CRDTs and event sourcing, I actively explore the engineering challenges behind distributed and real-time systems.
             </p>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
