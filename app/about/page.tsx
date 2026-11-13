@@ -66,7 +66,23 @@ export default function About() {
         {/* Full-width Narrative & Journey Text Below */}
         <div className="mt-10 sm:mt-12 space-y-5 text-base md:text-lg leading-relaxed text-muted-foreground">
           <p>
-            I am a Software Engineer specializing in <span className="text-foreground font-semibold">Backend Development, Distributed Systems, and Real-Time Applications</span>. I have professional experience building backend services with <span className="text-foreground font-semibold">Node.js and TypeScript</span>, most recently working as a Software Engineer Intern at <span className="text-foreground font-semibold">Emergence Mobility Technologies</span> and previously as a Full Stack Developer Intern at <span className="text-foreground font-semibold">Legal Care</span>.
+            I am a Software Engineer specializing in{" "}
+            <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+              Backend Development, Distributed Systems, and Real-Time Applications
+            </span>
+            . I have professional experience building backend services with{" "}
+            <span className="font-semibold text-sky-600 dark:text-sky-400">
+              Node.js and TypeScript
+            </span>
+            , most recently working as a Software Engineer Intern at{" "}
+            <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+              Emergence Mobility Technologies
+            </span>{" "}
+            and previously as a Full Stack Developer Intern at{" "}
+            <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+              Legal Care
+            </span>
+            .
           </p>
           <p>
             My engineering journey revolves around understanding how systems work behind the interface — from handling concurrent operations and asynchronous workloads to building applications that remain reliable under changing conditions.
@@ -78,10 +94,17 @@ export default function About() {
           <div className="space-y-4">
             <h3 className="text-foreground font-bold text-xl tracking-tight">Technical Philosophy</h3>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-              I believe good software engineering goes beyond making things work. It is about building systems that remain <span className="text-foreground font-medium">reliable, scalable, and maintainable as complexity grows.</span>
+              I believe good software engineering goes beyond making things work. It is about building systems that remain{" "}
+              <span className="font-medium text-emerald-600 dark:text-emerald-400">
+                reliable, scalable, and maintainable as complexity grows.
+              </span>
             </p>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-              My work spans <span className="text-foreground font-medium">Node.js, TypeScript, PostgreSQL, Redis, and Valkey</span>, with hands-on experience in background job processing using BullMQ, caching strategies, database connection pooling, and real-time communication using WebSockets and Server-Sent Events.
+              My work spans{" "}
+              <span className="font-medium text-sky-600 dark:text-sky-400">
+                Node.js, TypeScript, PostgreSQL, Redis, and Valkey
+              </span>
+              , with hands-on experience in background job processing using BullMQ, caching strategies, database connection pooling, and real-time communication using WebSockets and Server-Sent Events.
             </p>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
               I focus on backend architecture, concurrency, state synchronization, and designing systems where performance and reliability are built into the foundation.
@@ -94,7 +117,15 @@ export default function About() {
               I enjoy solving problems that go beyond traditional CRUD applications.
             </p>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-              From building <span className="text-foreground font-medium">FocusKaro</span>, a high-availability task monitoring system with heartbeat-based failure detection, to developing <span className="text-foreground font-medium">Lyner</span>, a distributed collaboration engine powered by CRDTs and event sourcing, I actively explore the engineering challenges behind distributed and real-time systems.
+              From building{" "}
+              <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+                FocusKaro
+              </span>
+              , a high-availability task monitoring system with heartbeat-based failure detection, to developing{" "}
+              <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+                Lyner
+              </span>
+              , a distributed collaboration engine powered by CRDTs and event sourcing, I actively explore the engineering challenges behind distributed and real-time systems.
             </p>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
               Whether it is handling concurrent operations, recovering failed background jobs, or synchronizing state across multiple clients, I aim to understand the problem at the system level before writing the solution.
